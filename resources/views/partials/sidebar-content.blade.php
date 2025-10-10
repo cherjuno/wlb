@@ -1,0 +1,233 @@
+<!-- Logo -->
+<div class="flex h-16 shrink-0 items-center">
+    <div class="flex items-center">
+        <div class="flex-shrink-0">
+            <div class="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center">
+                <span class="text-white font-bold text-sm">WLB</span>
+            </div>
+        </div>
+        <div class="ml-3">
+            <h1 class="text-xl font-bold text-gray-900">WLB Monitor</h1>
+            <p class="text-xs text-gray-500">{{ \App\Models\WlbSetting::get('company_name', 'Perusahaan A') }}</p>
+        </div>
+    </div>
+</div>
+
+<!-- Navigation -->
+<nav class="flex flex-1 flex-col">
+    <ul role="list" class="flex flex-1 flex-col gap-y-7">
+        <li>
+            <ul role="list" class="-mx-2 space-y-1">
+                <!-- Dashboard -->
+                <li>
+                    <a href="{{ route('dashboard') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('dashboard') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('dashboard') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0018 16.5h-2.25m-7.5 0V10.5a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 012.25 2.25v6zM12 3.75h-3z" />
+                        </svg>
+                        Dashboard
+                    </a>
+                </li>
+
+                <!-- Attendance -->
+                <li>
+                    <a href="{{ route('attendance.index') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('attendance.*') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('attendance.*') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Absensi
+                    </a>
+                </li>
+
+                <!-- Leave -->
+                <li>
+                    <a href="{{ route('leave.index') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('leave.*') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('leave.*') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+                        </svg>
+                        Cuti
+                        @if(auth()->user()->hasRole('manager') || auth()->user()->hasRole('admin'))
+                            @php
+                                $pendingLeaves = \App\Models\Leave::where('status', 'pending');
+                                if(auth()->user()->hasRole('manager')) {
+                                    $subordinateIds = auth()->user()->subordinates()->pluck('id');
+                                    $pendingLeaves = $pendingLeaves->whereIn('user_id', $subordinateIds);
+                                }
+                                $pendingCount = $pendingLeaves->count();
+                            @endphp
+                            @if($pendingCount > 0)
+                                <span class="ml-auto w-5 h-5 text-xs flex items-center justify-center bg-amber-100 text-amber-800 rounded-full">{{ $pendingCount }}</span>
+                            @endif
+                        @endif
+                    </a>
+                </li>
+
+                <!-- Overtime -->
+                <li>
+                    <a href="{{ route('overtime.index') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('overtime.*') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('overtime.*') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+                        </svg>
+                        Lembur
+                        @if(auth()->user()->hasRole('manager') || auth()->user()->hasRole('admin'))
+                            @php
+                                $pendingOvertimes = \App\Models\Overtime::where('status', 'pending');
+                                if(auth()->user()->hasRole('manager')) {
+                                    $subordinateIds = auth()->user()->subordinates()->pluck('id');
+                                    $pendingOvertimes = $pendingOvertimes->whereIn('user_id', $subordinateIds);
+                                }
+                                $pendingOvertimeCount = $pendingOvertimes->count();
+                            @endphp
+                            @if($pendingOvertimeCount > 0)
+                                <span class="ml-auto w-5 h-5 text-xs flex items-center justify-center bg-amber-100 text-amber-800 rounded-full">{{ $pendingOvertimeCount }}</span>
+                            @endif
+                        @endif
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        @if(auth()->user()->hasRole('manager') || auth()->user()->hasRole('admin'))
+        <!-- Manager/Admin Section -->
+        <li>
+            <div class="text-xs font-semibold leading-6 text-gray-400">Management</div>
+            <ul role="list" class="-mx-2 mt-2 space-y-1">
+                <!-- Pending Approvals -->
+                <li>
+                    <a href="{{ route('leave.pending') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('*.pending') ? 'bg-amber-50 text-amber-600' : 'text-gray-700 hover:bg-gray-50 hover:text-amber-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('*.pending') ? 'text-amber-600' : 'text-gray-400 group-hover:text-amber-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Persetujuan
+                        @php
+                            $totalPending = $pendingCount + $pendingOvertimeCount;
+                        @endphp
+                        @if($totalPending > 0)
+                            <span class="ml-auto w-5 h-5 text-xs flex items-center justify-center bg-red-100 text-red-800 rounded-full">{{ $totalPending }}</span>
+                        @endif
+                    </a>
+                </li>
+
+                <!-- Reports -->
+                <li>
+                    <a href="{{ route('attendance.report') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('*.report') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('*.report') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                        </svg>
+                        Laporan
+                    </a>
+                </li>
+
+                @if(auth()->user()->hasRole('admin'))
+                <!-- User Management -->
+                <li>
+                    <a href="{{ route('users.index') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('users.*') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('users.*') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
+                        </svg>
+                        Kelola User
+                    </a>
+                </li>
+                @endif
+            </ul>
+        </li>
+        @endif
+
+        <!-- Quick Actions -->
+        <li class="mt-auto">
+            <div class="text-xs font-semibold leading-6 text-gray-400">Quick Actions</div>
+            <ul role="list" class="-mx-2 mt-2 space-y-1">
+                <li>
+                    <button type="button" 
+                            onclick="quickCheckIn()" 
+                            class="group flex w-full gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-green-50 hover:text-green-600">
+                        <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-green-600" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Quick Check-in
+                    </button>
+                </li>
+                <li>
+                    <a href="{{ route('leave.create') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-blue-50 hover:text-blue-600">
+                        <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-blue-600" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Ajukan Cuti
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('overtime.create') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-amber-50 hover:text-amber-600">
+                        <svg class="h-6 w-6 shrink-0 text-gray-400 group-hover:text-amber-600" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Ajukan Lembur
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<!-- User info -->
+<div class="flex items-center gap-x-4 px-6 py-3 text-sm font-semibold leading-6 text-gray-900 border-t border-gray-200">
+    <div class="h-8 w-8 rounded-full bg-blue-600 flex items-center justify-center">
+        <span class="text-sm font-medium text-white">{{ substr(auth()->user()->name, 0, 1) }}</span>
+    </div>
+    <div class="flex-1">
+        <p class="text-sm font-medium text-gray-900">{{ auth()->user()->name }}</p>
+        <p class="text-xs text-gray-500">
+            @if(auth()->user()->hasRole('admin'))
+                Administrator
+            @elseif(auth()->user()->hasRole('manager'))
+                Manager
+            @else
+                Employee
+            @endif
+        </p>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+async function quickCheckIn() {
+    try {
+        const response = await fetch('{{ route("attendance.quick-check-in") }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        });
+
+        const data = await response.json();
+        
+        if (data.success) {
+            alert('Check-in berhasil!');
+            location.reload();
+        } else {
+            alert(data.message || 'Terjadi kesalahan');
+        }
+    } catch (error) {
+        alert('Terjadi kesalahan saat melakukan check-in');
+    }
+}
+</script>
+@endpush
