@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -101,23 +102,89 @@
                 <canvas id="approvalChart"></canvas>
             </div>
         </div>
-        <div class="bg-white rounded-2xl shadow border border-gray-100 p-6">
-            <h3 class="text-sm font-semibold text-gray-700 mb-4">Top Zona Merah</h3>
-            <ul class="space-y-3 max-h-64 overflow-auto">
-                @foreach(collect($redZoneEmployees)->sortBy('score')->take(6) as $rz)
-                    <li class="flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="h-8 w-8 rounded-full bg-red-100 text-red-700 flex items-center justify-center font-bold">{{ strtoupper(substr($rz['user']->name,0,1)) }}</div>
-                            <div>
-                                <div class="text-sm font-semibold text-gray-900">{{ $rz['user']->name }}</div>
-                                <div class="text-xs text-gray-500">{{ $rz['user']->department->name ?? '—' }}</div>
-                            </div>
-                        </div>
-                        <span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-700 font-semibold">{{ $rz['score'] }}</span>
-                    </li>
-                @endforeach
-            </ul>
+        <div class="bg-white rounded-2xl shadow border border-gray-100 p-4 sm:p-6 animate-fade-in-up">
+            {{-- Warning Header with compact design --}}
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                <div class="flex items-center gap-2">
+                    <div class="text-lg animate-bounce">⚠️</div>
+                    <h3 class="text-sm font-semibold text-gray-700">Zona Merah (Risiko Burnout/Lembur/Cuti)</h3>
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700 animate-pulse">Critical</span>
+                </div>
+                @php
+                    $warningCount = \App\Models\User::where('is_active', true)->get()->filter(function($user) {
+                        $overtimeToday = $user->overtimes()->whereDate('date', now())->where('status','approved')->sum('hours');
+                        $overtimeWeek = $user->overtimes()->whereBetween('date', [now()->startOfWeek(), now()->endOfWeek()])->where('status','approved')->sum('hours');
+                        $cutiTahun = $user->leaves()->whereYear('start_date', now()->year)->where('type','annual')->where('status','approved')->sum('days_requested');
+                        return $overtimeToday > 4 || $overtimeWeek > 18 || $cutiTahun < 12;
+                    })->count();
+                @endphp
+                <div class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-lg">
+                    <span class="font-semibold">{{ $warningCount }} karyawan</span> melebihi batas lembur/cuti
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="min-w-full text-xs sm:text-sm text-left">
+                    <thead>
+                        <tr class="text-xs text-gray-500 uppercase border-b">
+                            <th class="py-2 px-2 sm:px-3">Nama</th>
+                            <th class="py-2 px-2 sm:px-3 hidden sm:table-cell">Dept</th>
+                            <th class="py-2 px-2 sm:px-3 hidden md:table-cell">Posisi</th>
+                            <th class="py-2 px-2 sm:px-3">WLB</th>
+                            <th class="py-2 px-2 sm:px-3">Lembur/Minggu</th>
+                            <th class="py-2 px-2 sm:px-3 hidden lg:table-cell">Cuti/Tahun</th>
+                            <th class="py-2 px-2 sm:px-3 hidden xl:table-cell">Gaji</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(collect($redZoneEmployees)->sortBy('score')->take(8) as $rz)
+                        @php
+                            $overtimeToday = $rz['user']->overtimes()->whereDate('date', now())->where('status','approved')->sum('hours');
+                            $overtimeWeek = $rz['user']->overtimes()->whereBetween('date', [now()->startOfWeek(), now()->endOfWeek()])->where('status','approved')->sum('hours');
+                            $cutiTahun = $rz['user']->leaves()->whereYear('start_date', now()->year)->where('type','annual')->where('status','approved')->sum('days_requested');
+                            $hasWarning = $overtimeToday > 4 || $overtimeWeek > 18 || $cutiTahun < 12;
+                        @endphp
+                        <tr class="border-b hover:bg-red-50 transition-colors @if($hasWarning) bg-yellow-50 @endif">
+                            <td class="py-2 px-2 sm:px-3 font-semibold text-gray-900">
+                                <div class="flex items-center gap-1 sm:gap-2">
+                                    @if($hasWarning)
+                                        <span class="text-xs animate-pulse">⚠️</span>
+                                    @endif
+                                    <span class="h-5 w-5 sm:h-7 sm:w-7 rounded-full bg-red-100 text-red-700 flex items-center justify-center text-xs sm:text-sm font-bold">{{ strtoupper(substr($rz['user']->name,0,1)) }}</span>
+                                    <span class="text-xs sm:text-sm truncate max-w-[80px] sm:max-w-none">{{ $rz['user']->name }}</span>
+                                </div>
+                            </td>
+                            <td class="py-2 px-2 sm:px-3 text-xs hidden sm:table-cell">{{ Str::limit($rz['user']->department->name ?? '-', 8) }}</td>
+                            <td class="py-2 px-2 sm:px-3 text-xs hidden md:table-cell">{{ Str::limit($rz['user']->position->name ?? '-', 10) }}</td>
+                            <td class="py-2 px-2 sm:px-3">
+                                <span class="px-1 sm:px-2 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 animate-pulse">{{ $rz['score'] }}</span>
+                            </td>
+                            <td class="py-2 px-2 sm:px-3 @if($overtimeWeek > 18) text-red-600 font-bold @endif">
+                                <span class="text-xs">{{ $overtimeWeek }}j</span>
+                                @if($overtimeWeek > 18)<span class="ml-1 text-red-500">⚠️</span>@endif
+                            </td>
+                            <td class="py-2 px-2 sm:px-3 hidden lg:table-cell @if($cutiTahun < 12) text-red-600 font-bold @endif">
+                                <span class="text-xs">{{ $cutiTahun }}h</span>
+                                @if($cutiTahun < 12)<span class="ml-1 text-red-500">⚠️</span>@endif
+                            </td>
+                            <td class="py-2 px-2 sm:px-3 text-xs hidden xl:table-cell">
+                                Rp {{ number_format($rz['user']->salary ?? 0, 0, ',', '.') }}
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
+<style>
+@keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+    animation: fade-in-up 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+</style>
     </div>
 
     {{-- Pending Approvals Alert --}}

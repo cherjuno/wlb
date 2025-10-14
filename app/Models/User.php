@@ -33,6 +33,7 @@ class User extends Authenticatable
         'manager_id',
         'annual_leave_quota',
         'remaining_leave',
+        'salary',
         'is_active',
     ];
 

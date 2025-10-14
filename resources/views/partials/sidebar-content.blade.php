@@ -94,6 +94,39 @@
             </ul>
         </li>
 
+        <!-- Personal Section -->
+        <li>
+            <div class="text-xs font-semibold leading-6 text-gray-400">Personal</div>
+            <ul role="list" class="-mx-2 mt-2 space-y-1">
+                <!-- Profile -->
+                <li>
+                    <a href="{{ route('profile.edit') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('profile.*') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('profile.*') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                        </svg>
+                        Profile
+                    </a>
+                </li>
+
+                <!-- Salary -->
+                <li>
+                    <a href="{{ route('salary.index') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('salary.*') ? 'bg-blue-50 text-blue-600' : 'text-gray-700 hover:bg-gray-50 hover:text-blue-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('salary.*') ? 'text-blue-600' : 'text-gray-400 group-hover:text-blue-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Gaji Bulanan
+                        <span class="ml-auto text-xs bg-green-100 text-green-800 px-2 py-1 rounded-full font-medium">
+                            Rp {{ number_format(Auth::user()->salary ?? 0, 0, ',', '.') }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
         @if(auth()->user()->hasRole('manager') || auth()->user()->hasRole('admin'))
         <!-- Manager/Admin Section -->
         <li>

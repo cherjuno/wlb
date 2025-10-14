@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="flex justify-between items-center bg-white/10 rounded-lg p-2">
                                     <span class="text-green-300 font-medium">👔 Manager:</span>
-                                    <span class="text-white text-xs">manager.it@wlbapp.com</span>
+                                    <span class="text-white text-xs">sarah.johnson@wlbapp.com</span>
                                 </div>
                                 <div class="flex justify-between items-center bg-white/10 rounded-lg p-2">
                                     <span class="text-yellow-300 font-medium">👤 Employee:</span>

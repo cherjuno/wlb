@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 @section('content')
@@ -88,31 +89,88 @@
 
     {{-- Red Zone Employees Alert --}}
     @if(count($redZoneMembers) > 0)
-    <div class="bg-red-50 border border-red-200 rounded-xl p-6">
-        <div class="flex items-center space-x-3 mb-4">
-            <div class="text-2xl">🚨</div>
-            <div>
-                <h3 class="text-lg font-semibold text-red-800">Team Members Need Attention</h3>
-                <p class="text-red-600">The following team members have low WLB scores and may be at risk of burnout:</p>
+    <div class="bg-white rounded-2xl shadow border border-gray-100 p-4 sm:p-6 animate-fade-in-up">
+        {{-- Warning Header with compact design --}}
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+            <div class="flex items-center gap-2">
+                <div class="text-lg animate-bounce">⚠️</div>
+                <h3 class="text-sm font-semibold text-gray-700">Zona Merah Tim (Risiko Burnout/Lembur/Cuti)</h3>
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-700 animate-pulse">Critical</span>
+            </div>
+            @php
+                $warningCount = collect($redZoneMembers)->filter(function($member) {
+                    $overtimeToday = $member['user']->overtimes()->whereDate('date', now())->where('status','approved')->sum('hours');
+                    $overtimeWeek = $member['user']->overtimes()->whereBetween('date', [now()->startOfWeek(), now()->endOfWeek()])->where('status','approved')->sum('hours');
+                    $cutiTahun = $member['user']->leaves()->whereYear('start_date', now()->year)->where('type','annual')->where('status','approved')->sum('days_requested');
+                    return $overtimeToday > 4 || $overtimeWeek > 18 || $cutiTahun < 12;
+                })->count();
+            @endphp
+            <div class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded-lg">
+                <span class="font-semibold">{{ $warningCount }} anggota tim</span> melebihi batas lembur/cuti
             </div>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach($redZoneMembers as $member)
-                <div class="bg-white rounded-lg p-4 border border-red-200">
-                    <div class="flex items-center justify-between mb-2">
-                        <h4 class="font-medium text-gray-900">{{ $member['user']->name }}</h4>
-                        <span class="text-lg font-bold text-red-600">{{ $member['score'] }}</span>
-                    </div>
-                    <p class="text-sm text-gray-600 mb-2">{{ $member['user']->position->name ?? 'N/A' }}</p>
-                    <span class="px-2 py-1 text-xs rounded-full bg-red-100 text-red-800">
-                        {{ $member['status']['label'] }}
-                    </span>
-                </div>
-            @endforeach
+        <div class="overflow-x-auto">
+            <table class="min-w-full text-xs sm:text-sm text-left">
+                <thead>
+                    <tr class="text-xs text-gray-500 uppercase border-b">
+                        <th class="py-2 px-2 sm:px-3">Nama</th>
+                        <th class="py-2 px-2 sm:px-3 hidden md:table-cell">Posisi</th>
+                        <th class="py-2 px-2 sm:px-3">WLB</th>
+                        <th class="py-2 px-2 sm:px-3">Lembur/Minggu</th>
+                        <th class="py-2 px-2 sm:px-3 hidden lg:table-cell">Cuti/Tahun</th>
+                        <th class="py-2 px-2 sm:px-3 hidden xl:table-cell">Gaji</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($redZoneMembers as $member)
+                    @php
+                        $overtimeToday = $member['user']->overtimes()->whereDate('date', now())->where('status','approved')->sum('hours');
+                        $overtimeWeek = $member['user']->overtimes()->whereBetween('date', [now()->startOfWeek(), now()->endOfWeek()])->where('status','approved')->sum('hours');
+                        $cutiTahun = $member['user']->leaves()->whereYear('start_date', now()->year)->where('type','annual')->where('status','approved')->sum('days_requested');
+                        $hasWarning = $overtimeToday > 4 || $overtimeWeek > 18 || $cutiTahun < 12;
+                    @endphp
+                    <tr class="border-b hover:bg-red-50 transition-colors @if($hasWarning) bg-yellow-50 @endif">
+                        <td class="py-2 px-2 sm:px-3 font-semibold text-gray-900">
+                            <div class="flex items-center gap-1 sm:gap-2">
+                                @if($hasWarning)
+                                    <span class="text-xs animate-pulse">⚠️</span>
+                                @endif
+                                <span class="h-5 w-5 sm:h-7 sm:w-7 rounded-full bg-red-100 text-red-700 flex items-center justify-center text-xs sm:text-sm font-bold">{{ strtoupper(substr($member['user']->name,0,1)) }}</span>
+                                <span class="text-xs sm:text-sm truncate max-w-[80px] sm:max-w-none">{{ $member['user']->name }}</span>
+                            </div>
+                        </td>
+                        <td class="py-2 px-2 sm:px-3 text-xs hidden md:table-cell">{{ Str::limit($member['user']->position->name ?? '-', 10) }}</td>
+                        <td class="py-2 px-2 sm:px-3">
+                            <span class="px-1 sm:px-2 py-1 rounded-full text-xs font-bold bg-red-100 text-red-700 animate-pulse">{{ $member['score'] }}</span>
+                        </td>
+                        <td class="py-2 px-2 sm:px-3 @if($overtimeWeek > 18) text-red-600 font-bold @endif">
+                            <span class="text-xs">{{ $overtimeWeek }}j</span>
+                            @if($overtimeWeek > 18)<span class="ml-1 text-red-500">⚠️</span>@endif
+                        </td>
+                        <td class="py-2 px-2 sm:px-3 hidden lg:table-cell @if($cutiTahun < 12) text-red-600 font-bold @endif">
+                            <span class="text-xs">{{ $cutiTahun }}h</span>
+                            @if($cutiTahun < 12)<span class="ml-1 text-red-500">⚠️</span>@endif
+                        </td>
+                        <td class="py-2 px-2 sm:px-3 text-xs hidden xl:table-cell">
+                            Rp {{ number_format($member['user']->salary ?? 0, 0, ',', '.') }}
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
     @endif
+<style>
+@keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+    animation: fade-in-up 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+</style>
 
     {{-- Team Performance Chart & Pending Approvals --}}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">

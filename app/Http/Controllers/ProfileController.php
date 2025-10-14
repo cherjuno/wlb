@@ -57,4 +57,44 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    /**
+     * Display salary information.
+     */
+    public function salary(Request $request): View
+    {
+        $user = $request->user();
+        
+        // Calculate salary statistics
+        $monthlySalary = $user->salary ?? 0;
+        $annualSalary = $monthlySalary * 12;
+        $dailySalary = $monthlySalary / 30;
+        
+        // Get overtime earnings this month
+        $overtimeEarnings = $user->overtimes()
+            ->where('status', 'approved')
+            ->whereMonth('date', now()->month)
+            ->whereYear('date', now()->year)
+            ->sum('hours') * ($monthlySalary / 173); // Assuming 173 working hours per month
+        
+        // Get leave deductions this month
+        $leaveDeductions = $user->leaves()
+            ->where('status', 'approved')
+            ->where('type', 'unpaid')
+            ->whereMonth('start_date', now()->month)
+            ->whereYear('start_date', now()->year)
+            ->sum('days_requested') * $dailySalary;
+        
+        $netSalary = $monthlySalary + $overtimeEarnings - $leaveDeductions;
+        
+        return view('salary.index', compact(
+            'user',
+            'monthlySalary',
+            'annualSalary',
+            'dailySalary',
+            'overtimeEarnings',
+            'leaveDeductions',
+            'netSalary'
+        ));
+    }
 }

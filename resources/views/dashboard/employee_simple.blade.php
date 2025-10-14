@@ -1,12 +1,61 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+/* Ensure text visibility in dashboard */
+.dashboard-text {
+    color: #1f2937 !important;
+}
+.dashboard-text-white {
+    color: #ffffff !important;
+}
+.dashboard-bg-white {
+    background-color: #ffffff !important;
+}
+</style>
+
 <div class="space-y-6 max-w-6xl mx-auto" x-data="{ 
     showWlbDetails: false,
     attendanceLoading: false
 }">
     {{-- WLB Score Header dengan Interactive Elements --}}
     <div class="relative overflow-hidden bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white rounded-3xl p-8 shadow-2xl">
+    {{-- Salary Card --}}
+    <div class="relative mt-8 flex items-center justify-center">
+        <div class="relative bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 rounded-2xl shadow-xl p-6 w-full max-w-md animate-fade-in-up">
+            <div class="absolute -top-4 -right-4 w-10 h-10 bg-white/20 rounded-full animate-pulse"></div>
+            <div class="flex items-center space-x-4">
+                <div class="h-12 w-12 bg-white/30 rounded-xl flex items-center justify-center backdrop-blur-sm">
+                    <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3zm0 10c-4.418 0-8-1.79-8-4V7c0-2.21 3.582-4 8-4s8 1.79 8 4v7c0 2.21-3.582 4-8 4z" />
+                    </svg>
+                </div>
+                <div>
+                    <div class="text-lg font-semibold text-white">Gaji Bulanan</div>
+                    <div class="text-3xl font-bold bg-gradient-to-r from-white to-green-200 bg-clip-text text-transparent animate-fade-in">
+                        Rp {{ number_format(Auth::user()->salary ?? 0, 0, ',', '.') }}
+                    </div>
+                    <div class="text-xs text-white/80 mt-1">(Sebelum potongan pajak, tunjangan, dll)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<style>
+@keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+    animation: fade-in-up 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.animate-fade-in {
+    animation: fade-in 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+</style>
         {{-- Background Animation --}}
         <div class="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-purple-500/20 to-pink-500/20 animate-pulse"></div>
         <div class="absolute -top-10 -right-10 w-32 h-32 bg-white/10 rounded-full animate-bounce opacity-50"></div>
@@ -85,9 +134,9 @@
     {{-- Quick Actions & Today Status dengan Interactive Cards --}}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {{-- Today's Status --}}
-        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="dashboard-bg-white rounded-3xl shadow-xl border border-gray-100 p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="flex items-center justify-between mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">Today's Status</h3>
+                <h3 class="text-2xl font-bold dashboard-text">Today's Status</h3>
                 <div class="h-12 w-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-2xl flex items-center justify-center">
                     <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -99,7 +148,7 @@
                 <div class="space-y-4">
                     <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-gray-600 font-medium">Check In:</span>
+                            <span class="dashboard-text font-medium">Check In:</span>
                             <span class="text-xl font-bold text-blue-600">
                                 {{ $todayAttendance->check_in ? \Carbon\Carbon::parse($todayAttendance->check_in)->format('H:i') : '-' }}
                             </span>
@@ -108,7 +157,7 @@
                     
                     <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-4">
                         <div class="flex items-center justify-between">
-                            <span class="text-gray-600 font-medium">Check Out:</span>
+                            <span class="dashboard-text font-medium">Check Out:</span>
                             <span class="text-xl font-bold text-purple-600">
                                 {{ $todayAttendance->check_out ? \Carbon\Carbon::parse($todayAttendance->check_out)->format('H:i') : 'Belum check out' }}
                             </span>
@@ -118,7 +167,7 @@
                     @if($todayAttendance->check_in && $todayAttendance->check_out)
                         <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-4">
                             <div class="flex items-center justify-between">
-                                <span class="text-gray-600 font-medium">Work Hours:</span>
+                                <span class="dashboard-text font-medium">Work Hours:</span>
                                 <span class="text-xl font-bold text-green-600">
                                     {{ \Carbon\Carbon::parse($todayAttendance->check_in)->diffInHours(\Carbon\Carbon::parse($todayAttendance->check_out)) }} jam
                                 </span>
@@ -129,15 +178,15 @@
             @else
                 <div class="text-center py-8">
                     <div class="text-6xl mb-4">😴</div>
-                    <p class="text-gray-500 text-lg italic">Belum ada catatan kehadiran hari ini</p>
+                    <p class="dashboard-text text-lg italic">Belum ada catatan kehadiran hari ini</p>
                 </div>
             @endif
         </div>
 
         {{-- Quick Actions dengan Enhanced Interactivity --}}
-        <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+        <div class="dashboard-bg-white rounded-3xl shadow-xl border border-gray-100 p-8 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
             <div class="flex items-center justify-between mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">Quick Actions</h3>
+                <h3 class="text-2xl font-bold dashboard-text">Quick Actions</h3>
                 <div class="h-12 w-12 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl flex items-center justify-center">
                     <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>

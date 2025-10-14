@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+/* Force text visibility in form elements */
+.leave-form-control {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+}
+.leave-form-control option {
+    color: #111827 !important;
+    background-color: #ffffff !important;
+}
+.leave-form-control:focus {
+    color: #111827 !important;
+}
+</style>
+
 <div class="space-y-6">
     <!-- Header -->
     <div class="sm:flex sm:items-center">
@@ -37,10 +52,10 @@
             @if(auth()->user()->hasRole(['admin', 'manager']))
                 <div>
                     <label for="user_id" class="block text-sm font-medium text-gray-700">Employee</label>
-                    <select name="user_id" id="user_id" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                        <option value="">All Employees</option>
+                    <select name="user_id" id="user_id" class="leave-form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" style="color: #111827 !important; background-color: #ffffff !important;">
+                        <option value="" style="color: #111827 !important; background-color: #ffffff !important;">All Employees</option>
                         @foreach($users as $user)
-                            <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }}>
+                            <option value="{{ $user->id }}" {{ request('user_id') == $user->id ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">
                                 {{ $user->name }}
                             </option>
                         @endforeach
@@ -50,29 +65,29 @@
             
             <div>
                 <label for="type" class="block text-sm font-medium text-gray-700">Leave Type</label>
-                <select name="type" id="type" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    <option value="">All Types</option>
-                    <option value="annual" {{ request('type') == 'annual' ? 'selected' : '' }}>Annual Leave</option>
-                    <option value="sick" {{ request('type') == 'sick' ? 'selected' : '' }}>Sick Leave</option>
-                    <option value="emergency" {{ request('type') == 'emergency' ? 'selected' : '' }}>Emergency Leave</option>
-                    <option value="maternity" {{ request('type') == 'maternity' ? 'selected' : '' }}>Maternity Leave</option>
-                    <option value="paternity" {{ request('type') == 'paternity' ? 'selected' : '' }}>Paternity Leave</option>
+                <select name="type" id="type" class="leave-form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" style="color: #111827 !important; background-color: #ffffff !important;">
+                    <option value="" style="color: #111827 !important; background-color: #ffffff !important;">All Types</option>
+                    <option value="annual" {{ request('type') == 'annual' ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">Annual Leave</option>
+                    <option value="sick" {{ request('type') == 'sick' ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">Sick Leave</option>
+                    <option value="emergency" {{ request('type') == 'emergency' ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">Emergency Leave</option>
+                    <option value="maternity" {{ request('type') == 'maternity' ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">Maternity Leave</option>
+                    <option value="paternity" {{ request('type') == 'paternity' ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">Paternity Leave</option>
                 </select>
             </div>
             
             <div>
                 <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
-                <select name="status" id="status" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                    <option value="">All Status</option>
-                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }}>Pending</option>
-                    <option value="approved" {{ request('status') == 'approved' ? 'selected' : '' }}>Approved</option>
-                    <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }}>Rejected</option>
+                <select name="status" id="status" class="leave-form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" style="color: #111827 !important; background-color: #ffffff !important;">
+                    <option value="" style="color: #111827 !important; background-color: #ffffff !important;">All Status</option>
+                    <option value="pending" {{ request('status') == 'pending' ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">Pending</option>
+                    <option value="approved" {{ request('status') == 'approved' ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">Approved</option>
+                    <option value="rejected" {{ request('status') == 'rejected' ? 'selected' : '' }} style="color: #111827 !important; background-color: #ffffff !important;">Rejected</option>
                 </select>
             </div>
             
             <div>
                 <label for="date_from" class="block text-sm font-medium text-gray-700">From Date</label>
-                <input type="date" name="date_from" id="date_from" value="{{ request('date_from') }}" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <input type="date" name="date_from" id="date_from" value="{{ request('date_from') }}" class="leave-form-control mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" style="color: #111827 !important; background-color: #ffffff !important;">
             </div>
             
             <div class="sm:col-span-2 lg:col-span-4">

@@ -66,7 +66,7 @@
                         📋 Leave Type
                     </label>
                     <select name="type" id="type" x-model="form.type" 
-                            class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg transition-all duration-300" required>
+                            class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg text-gray-900 bg-white transition-all duration-300" required>
                         <option value="">Select leave type...</option>
                         <option value="annual">🏖️ Annual Leave</option>
                         <option value="sick">🏥 Sick Leave</option>
@@ -115,7 +115,7 @@
                         📅 Start Date
                     </label>
                     <input type="date" name="start_date" id="start_date" x-model="form.startDate" @change="calculateDays()"
-                           class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg transition-all duration-300" 
+                           class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg text-gray-900 bg-white transition-all duration-300" 
                            :min="new Date().toISOString().split('T')[0]" required>
                     @error('start_date')
                         <p class="mt-2 text-red-600 text-sm">{{ $message }}</p>
@@ -127,7 +127,7 @@
                         📅 End Date
                     </label>
                     <input type="date" name="end_date" id="end_date" x-model="form.endDate" @change="calculateDays()"
-                           class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg transition-all duration-300" 
+                           class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg text-gray-900 bg-white transition-all duration-300" 
                            :min="form.startDate" :required="form.durationType === 'full'">
                     @error('end_date')
                         <p class="mt-2 text-red-600 text-sm">{{ $message }}</p>
@@ -184,7 +184,7 @@
                     📝 Reason for Leave
                 </label>
                 <textarea name="reason" id="reason" rows="4" 
-                          class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg transition-all duration-300 resize-none" 
+                          class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg text-gray-900 bg-white placeholder-gray-500 transition-all duration-300 resize-none" 
                           placeholder="Please provide a detailed reason for your leave request..." required></textarea>
                 @error('reason')
                     <p class="mt-2 text-red-600 text-sm">{{ $message }}</p>
@@ -198,10 +198,10 @@
                 </label>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input type="text" name="emergency_contact_name" 
-                           class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500" 
+                           class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-gray-900 bg-white placeholder-gray-500" 
                            placeholder="Contact name">
                     <input type="tel" name="emergency_contact_phone" 
-                           class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500" 
+                           class="w-full px-4 py-3 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-gray-900 bg-white placeholder-gray-500" 
                            placeholder="Phone number">
                 </div>
             </div>
@@ -212,7 +212,7 @@
                     🔄 Work Handover Notes (Optional)
                 </label>
                 <textarea name="handover_notes" id="handover_notes" rows="3" 
-                          class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg transition-all duration-300 resize-none" 
+                          class="w-full px-4 py-4 rounded-2xl border border-gray-300 focus:ring-4 focus:ring-yellow-200 focus:border-yellow-500 text-lg text-gray-900 bg-white placeholder-gray-500 transition-all duration-300 resize-none" 
                           placeholder="Any work instructions or tasks to be handed over during your absence..."></textarea>
             </div>
 

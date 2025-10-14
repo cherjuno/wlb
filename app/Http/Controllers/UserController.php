@@ -92,6 +92,7 @@ class UserController extends Controller
             'position_id' => 'required|exists:positions,id',
             'manager_id' => 'nullable|exists:users,id',
             'annual_leave_quota' => 'required|integer|min:0|max:30',
+            'salary' => 'nullable|numeric|min:0',
             'role' => 'required|in:admin,manager,employee',
         ]);
 
@@ -110,7 +111,8 @@ class UserController extends Controller
             'manager_id' => $request->manager_id,
             'annual_leave_quota' => $request->annual_leave_quota,
             'remaining_leave' => $request->annual_leave_quota,
-            'is_active' => true,
+            'salary' => $request->salary,
+            'is_active' => $request->is_active ? true : false,
         ]);
 
         $user->assignRole($request->role);
