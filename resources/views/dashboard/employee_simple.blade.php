@@ -131,6 +131,92 @@
         </div>
     </div>
 
+    {{-- Job Stress Scale Notification --}}
+    @php
+        $hasFilledStress = Auth::user()->hasFilledJobStressThisMonth();
+        $currentStressLevel = Auth::user()->getCurrentMonthStressLevel();
+    @endphp
+    
+    @if(!$hasFilledStress)
+        <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-2xl p-6 shadow-xl animate-pulse">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="h-12 w-12 bg-white/20 rounded-full flex items-center justify-center">
+                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">⚠️ Wajib Mengisi Job Stress Scale</h3>
+                        <p class="text-orange-100">Anda belum mengisi assessment Job Stress Scale untuk bulan {{ now()->locale('id')->monthName }} {{ now()->year }}.</p>
+                        <p class="text-sm text-orange-200 mt-1">Assessment ini membantu perusahaan memahami tingkat stres karyawan dan meningkatkan kesejahteraan kerja.</p>
+                    </div>
+                </div>
+                <a href="{{ route('job-stress.create') }}" 
+                   class="bg-white text-orange-600 px-6 py-3 rounded-lg font-semibold hover:bg-orange-50 transition-colors whitespace-nowrap">
+                    📝 Isi Sekarang
+                </a>
+            </div>
+        </div>
+    @elseif($currentStressLevel === 'high')
+        <div class="bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-2xl p-6 shadow-xl">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="h-12 w-12 bg-white/20 rounded-full flex items-center justify-center">
+                        <span class="text-2xl">😰</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">🚨 Tingkat Stres Tinggi Terdeteksi</h3>
+                        <p class="text-red-100">Assessment bulan ini menunjukkan tingkat stres tinggi. Pertimbangkan untuk berkonsultasi dengan atasan atau HR.</p>
+                        <p class="text-sm text-red-200 mt-1">Jangan ragu untuk meminta dukungan atau penyesuaian beban kerja.</p>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <a href="{{ route('job-stress.history') }}" 
+                       class="bg-white text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-red-50 transition-colors text-sm">
+                        📊 Lihat Riwayat
+                    </a>
+                </div>
+            </div>
+        </div>
+    @elseif($currentStressLevel === 'moderate')
+        <div class="bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-2xl p-6 shadow-lg">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="h-12 w-12 bg-white/20 rounded-full flex items-center justify-center">
+                        <span class="text-2xl">😐</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">⚠️ Tingkat Stres Sedang</h3>
+                        <p class="text-yellow-100">Assessment bulan ini menunjukkan tingkat stres sedang. Monitor kondisi Anda dan jaga work-life balance.</p>
+                    </div>
+                </div>
+                <a href="{{ route('job-stress.history') }}" 
+                   class="bg-white text-yellow-600 px-4 py-2 rounded-lg font-medium hover:bg-yellow-50 transition-colors text-sm">
+                    📊 Lihat Detail
+                </a>
+            </div>
+        </div>
+    @else
+        <div class="bg-gradient-to-r from-green-500 to-emerald-500 text-white rounded-2xl p-6 shadow-lg">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="h-12 w-12 bg-white/20 rounded-full flex items-center justify-center">
+                        <span class="text-2xl">😌</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold">✅ Tingkat Stres Rendah</h3>
+                        <p class="text-green-100">Selamat! Assessment bulan ini menunjukkan tingkat stres rendah. Pertahankan kondisi ini!</p>
+                    </div>
+                </div>
+                <a href="{{ route('job-stress.history') }}" 
+                   class="bg-white text-green-600 px-4 py-2 rounded-lg font-medium hover:bg-green-50 transition-colors text-sm">
+                    📊 Lihat Riwayat
+                </a>
+            </div>
+        </div>
+    @endif
+
     {{-- Quick Actions & Today Status dengan Interactive Cards --}}
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {{-- Today's Status --}}

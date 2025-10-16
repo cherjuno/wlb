@@ -193,6 +193,15 @@
             </div>
         </div>
 
+        {{-- Personal Attendance Section --}}
+        <div class="bg-white rounded-2xl shadow border border-gray-100 p-6 mb-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Personal Attendance</h3>
+            
+            <div id="attendanceStatus" class="space-y-4">
+                {{-- Content loaded by JavaScript --}}
+            </div>
+        </div>
+
         {{-- Quick Actions --}}
         <div class="bg-white rounded-2xl shadow border border-gray-100 p-6">
             <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
@@ -387,5 +396,183 @@ makeDonut('mgrLeaveType', leaveLabels, leaveData, ['#6366F1','#F59E0B','#10B981'
 const otLabels = Object.keys(otTypeStats);
 const otData = Object.values(otTypeStats);
 makeDonut('mgrOtType', otLabels, otData, ['#8B5CF6','#06B6D4','#22C55E']);
+
+// Personal Attendance Management
+function loadAttendanceStatus() {
+    fetch('{{ route("attendance.today-status") }}')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('attendanceStatus');
+            
+            if (!data.hasCheckedIn) {
+                container.innerHTML = `
+                    <div class="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="p-2 bg-blue-500 rounded-lg">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium text-gray-900">Ready to Check In</p>
+                                <p class="text-sm text-gray-600">Start your work day</p>
+                            </div>
+                        </div>
+                        <button onclick="quickCheckIn()" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+                            Check In
+                        </button>
+                    </div>
+                `;
+            } else if (!data.hasCheckedOut) {
+                container.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-4 bg-green-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2 bg-green-500 rounded-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Checked In</p>
+                                    <p class="text-sm text-gray-600">Started at ${data.checkInTime}</p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">Active</span>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-orange-50 rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2 bg-orange-500 rounded-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Ready to Check Out</p>
+                                    <p class="text-sm text-gray-600">End your work day</p>
+                                </div>
+                            </div>
+                            <button onclick="quickCheckOut()" class="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors">
+                                Check Out
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } else {
+                const workHours = parseFloat(data.workHours || 0);
+                const status = data.status || 'present';
+                const statusColors = {
+                    'present': 'green',
+                    'late': 'yellow',
+                    'early_leave': 'orange'
+                };
+                const color = statusColors[status] || 'gray';
+                
+                container.innerHTML = `
+                    <div class="p-4 bg-${color}-50 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="p-2 bg-${color}-500 rounded-lg">
+                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="font-medium text-gray-900">Work Day Complete</p>
+                                    <p class="text-sm text-gray-600">
+                                        ${data.checkInTime} - ${data.checkOutTime} 
+                                        (${workHours.toFixed(1)} hours)
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="px-3 py-1 bg-${color}-100 text-${color}-800 text-sm rounded-full capitalize">
+                                ${status.replace('_', ' ')}
+                            </span>
+                        </div>
+                    </div>
+                `;
+            }
+        })
+        .catch(error => {
+            console.error('Error loading attendance status:', error);
+            document.getElementById('attendanceStatus').innerHTML = `
+                <div class="p-4 bg-red-50 rounded-lg">
+                    <p class="text-red-600">Error loading attendance status</p>
+                </div>
+            `;
+        });
+}
+
+function quickCheckIn() {
+    fetch('{{ route("attendance.quick-check-in") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showNotification('Check-in successful!', 'success');
+            loadAttendanceStatus();
+        } else {
+            showNotification(data.message || 'Check-in failed', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('Network error during check-in', 'error');
+    });
+}
+
+function quickCheckOut() {
+    fetch('{{ route("attendance.quick-check-out") }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showNotification('Check-out successful!', 'success');
+            loadAttendanceStatus();
+        } else {
+            showNotification(data.message || 'Check-out failed', 'error');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('Network error during check-out', 'error');
+    });
+}
+
+function showNotification(message, type) {
+    const color = type === 'success' ? 'green' : 'red';
+    const notification = document.createElement('div');
+    notification.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg bg-${color}-100 border border-${color}-200`;
+    notification.innerHTML = `
+        <div class="flex items-center space-x-2">
+            <div class="flex-shrink-0">
+                ${type === 'success' ? 
+                    '<svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>' :
+                    '<svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>'
+                }
+            </div>
+            <p class="text-${color}-800">${message}</p>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+// Load attendance status on page load
+document.addEventListener('DOMContentLoaded', loadAttendanceStatus);
 </script>
 @endpush

@@ -55,7 +55,7 @@
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             <div class="text-center p-4 rounded-xl bg-blue-50">
                 <div class="text-xs text-gray-600">Total Overtime</div>
-                <div class="text-2xl font-bold text-blue-700">{{ number_format($summary['totalHours'], 1) }}h</div>
+                <div class="text-2xl font-bold text-blue-700">{{ number_format($summary['totalHours'], 1, '.', '') }}h</div>
             </div>
             <div class="text-center p-4 rounded-xl bg-green-50">
                 <div class="text-xs text-gray-600">Approved</div>
@@ -71,11 +71,11 @@
             </div>
             <div class="text-center p-4 rounded-xl bg-purple-50">
                 <div class="text-xs text-gray-600">Weekend OT</div>
-                <div class="text-2xl font-bold text-purple-700">{{ number_format($summary['weekendHours'], 1) }}h</div>
+                <div class="text-2xl font-bold text-purple-700">{{ number_format($summary['weekendHours'], 1, '.', '') }}h</div>
             </div>
             <div class="text-center p-4 rounded-xl bg-amber-50">
                 <div class="text-xs text-gray-600">Weekday OT</div>
-                <div class="text-2xl font-bold text-amber-700">{{ number_format($summary['weekdayHours'], 1) }}h</div>
+                <div class="text-2xl font-bold text-amber-700">{{ number_format($summary['weekdayHours'], 1, '.', '') }}h</div>
             </div>
         </div>
     </div>
@@ -100,7 +100,7 @@
                             <div class="text-xs text-gray-500">{{ $ot->user->department->name ?? '—' }}</div>
                         </td>
                         <td class="px-4 py-3">{{ \Carbon\Carbon::parse($ot->date)->format('d M Y') }}</td>
-                        <td class="px-4 py-3">{{ number_format($ot->hours, 1) }}h</td>
+                        <td class="px-4 py-3">{{ number_format($ot->hours, 1, '.', '') }}h</td>
                         <td class="px-4 py-3">{{ ucfirst($ot->type) }}</td>
                         <td class="px-4 py-3">
                             <span class="px-2 py-1 rounded-full text-xs font-semibold 

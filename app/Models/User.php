@@ -99,6 +99,11 @@ class User extends Authenticatable
         return $this->hasMany(Overtime::class);
     }
 
+    public function jobStressScales()
+    {
+        return $this->hasMany(JobStressScale::class);
+    }
+
     public function approvedLeaves()
     {
         return $this->hasMany(Leave::class, 'approved_by');
@@ -151,5 +156,23 @@ class User extends Authenticatable
         return $this->attendances()
             ->whereBetween('date', [now()->startOfWeek(), now()->endOfWeek()])
             ->sum('work_hours');
+    }
+
+    public function hasFilledJobStressThisMonth()
+    {
+        return $this->jobStressScales()
+            ->where('month', now()->month)
+            ->where('year', now()->year)
+            ->exists();
+    }
+
+    public function getCurrentMonthStressLevel()
+    {
+        $currentStress = $this->jobStressScales()
+            ->where('month', now()->month)
+            ->where('year', now()->year)
+            ->first();
+            
+        return $currentStress ? $currentStress->stress_level : null;
     }
 }

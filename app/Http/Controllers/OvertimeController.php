@@ -22,15 +22,28 @@ class OvertimeController extends Controller
         $user = Auth::user();
         $query = Overtime::with(['user', 'approver']);
 
+        // Debug info
+        \Log::info('Overtime index accessed', [
+            'user_id' => $user->id,
+            'user_name' => $user->name,
+            'user_roles' => $user->getRoleNames()->toArray(),
+            'total_overtimes' => Overtime::count()
+        ]);
+
         // Filter berdasarkan role
         if ($user->hasRole('employee')) {
             $query->where('user_id', $user->id);
+            \Log::info('Applied employee filter', ['user_id' => $user->id]);
         } elseif ($user->hasRole('manager')) {
             // Manager bisa melihat overtimes dari subordinates dan dirinya sendiri
             $subordinateIds = $user->subordinates()->pluck('id')->push($user->id);
             $query->whereIn('user_id', $subordinateIds);
+            \Log::info('Applied manager filter', ['subordinate_ids' => $subordinateIds->toArray()]);
         }
         // Admin bisa melihat semua
+        else {
+            \Log::info('Admin user - no filter applied');
+        }
 
         // Filter berdasarkan parameter
         if ($request->filled('user_id') && ($user->hasRole('admin') || $user->hasRole('manager'))) {
@@ -54,6 +67,11 @@ class OvertimeController extends Controller
         }
 
         $overtimes = $query->orderBy('date', 'desc')->paginate(15);
+
+        \Log::info('Query result', [
+            'query_count' => $query->count(),
+            'paginated_count' => $overtimes->count()
+        ]);
 
         // Data untuk filter dropdown
         $users = collect();

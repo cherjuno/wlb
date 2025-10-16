@@ -189,7 +189,7 @@ class DashboardController extends Controller
 
         return view('dashboard.manager', compact(
             'teamSize', 'pendingLeaves', 'pendingOvertimes', 'teamCheckedIn',
-            'teamAttendanceRate', 'teamAverageWlbScore', 'redZoneMembers',
+            'teamAttendanceRate', 'teamAverageWlbScore', 'redZoneMembers', 'teamUsers',
             'pendingApprovals', 'performanceData', 'leaveTypeStats', 'overtimeTypeStats'
         ));
     }

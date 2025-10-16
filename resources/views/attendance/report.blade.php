@@ -80,7 +80,7 @@
                         <td class="px-4 py-3">{{ \Carbon\Carbon::parse($a->date)->format('d M Y') }}</td>
                         <td class="px-4 py-3">{{ $a->check_in ?? '—' }}</td>
                         <td class="px-4 py-3">{{ $a->check_out ?? '—' }}</td>
-                        <td class="px-4 py-3">{{ number_format($a->work_hours, 1) }}</td>
+                        <td class="px-4 py-3">{{ number_format($a->work_hours, 1, '.', '') }}h</td>
                         <td class="px-4 py-3">
                             <span class="px-2 py-1 rounded-full text-xs font-semibold 
                                 @if($a->status === 'present') bg-green-100 text-green-800 
