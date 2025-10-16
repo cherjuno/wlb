@@ -567,7 +567,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **🎯 WLB Monitoring System - Membangun lingkungan kerja yang sehat dan produktif** 
 
-Made with ❤️ by [PT. Pelangi Prima Mandiri](https://github.com/cherjuno)
+Made with ❤️ by [PT. Pelangi Prima Mandiri]()
 
 </div>
 ('stress_reminder_day', 'Monthly Reminder Day', '1', 'integer'),
