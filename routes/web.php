@@ -7,6 +7,7 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\OvertimeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\JobStressScaleController;
+use App\Http\Controllers\AnalyticsController;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Models\Overtime;
@@ -179,6 +180,11 @@ Route::middleware('auth')->group(function () {
     // User management routes (Admin and Manager only)
     Route::middleware(['role:admin|manager'])->group(function () {
         Route::resource('users', UserController::class);
+        
+        // Analytics routes  
+        Route::get('/analytics/matrix-overview', [AnalyticsController::class, 'matrixOverview'])->name('analytics.matrix-overview');
+        Route::get('/analytics/employee-matrix', [AnalyticsController::class, 'employeeMatrix'])->name('analytics.employee-matrix');
+        Route::get('/analytics/employee/{employee}', [AnalyticsController::class, 'employeeDetail'])->name('analytics.employee-detail');
     });
 
     // Manager only routes

@@ -246,6 +246,30 @@
                     </a>
                 </li>
 
+                <!-- Analytics Detail -->
+                <li>
+                    <a href="{{ route('analytics.employee-matrix') }}" 
+                       class="group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 {{ request()->routeIs('analytics.*') ? 'bg-green-50 text-green-600' : 'text-gray-700 hover:bg-gray-50 hover:text-green-600' }}">
+                        <svg class="h-6 w-6 shrink-0 {{ request()->routeIs('analytics.*') ? 'text-green-600' : 'text-gray-400 group-hover:text-green-600' }}" 
+                             fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0018 16.5h-2.25m-7.5 0V10.5a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 012.25 2.25v6zM12 3.75h-3z" />
+                        </svg>
+                        Analytics Detail
+                        @php
+                            $currentUser = auth()->user();
+                            $employeesQuery = \App\Models\User::where('is_active', true);
+                            if ($currentUser->hasRole('manager')) {
+                                $subordinateIds = $currentUser->subordinates()->pluck('id');
+                                $employeesQuery->whereIn('id', $subordinateIds);
+                            }
+                            $totalEmployees = $employeesQuery->count();
+                        @endphp
+                        <span class="ml-auto text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full font-medium">
+                            {{ $totalEmployees }}
+                        </span>
+                    </a>
+                </li>
+
                 <!-- User Management -->
                 <li>
                     <a href="{{ route('users.index') }}" 
