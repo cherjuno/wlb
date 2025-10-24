@@ -153,9 +153,12 @@
                                                 @csrf
                                                 <button type="submit" class="text-green-600 hover:text-green-900">Approve</button>
                                             </form>
-                                            <form action="{{ route('overtime.reject', $overtime) }}" method="POST" class="inline ml-2">
+                                            <form action="{{ route('overtime.reject', $overtime) }}" method="POST" class="inline ml-2" 
+                                                  onsubmit="return confirm('Are you sure you want to reject this overtime request?')">
                                                 @csrf
-                                                <button type="submit" class="text-red-600 hover:text-red-900">Reject</button>
+                                                <button type="submit" class="text-red-600 hover:text-red-900 px-2 py-1 rounded border border-red-300 hover:bg-red-50">
+                                                    Reject
+                                                </button>
                                             </form>
                                         @endif
                                         
