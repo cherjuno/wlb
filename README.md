@@ -1,491 +1,978 @@
-# 🏢 WLB Monitoring System
+# 🏢 WLB Monitoring System# 🏢 WLB Monitoring System
 
-# 🏢 WLB Monitoring System
 
-[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
 
-[![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php)](https://php.net/)[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)# 🏢 WLB Monitoring System
 
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)[![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php)](https://php.net/)
+[![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php)](https://php.net/)
 
-[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
 
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-> **Sistem monitoring Work-Life Balance berbasis Laravel dengan analisis stress dan dashboard analytics komprehensif**
+[![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php)](https://php.net/)[![Laravel](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel)](https://laravel.com/)
 
 > **Sistem monitoring Work-Life Balance berbasis Laravel dengan analisis stress dan dashboard analytics komprehensif**
 
-## 📋 Daftar Isi
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)[![PHP](https://img.shields.io/badge/PHP-8.3+-777BB4?style=for-the-badge&logo=php)](https://php.net/)
 
 ## 📋 Daftar Isi
+
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 
 - [🎯 Tentang Sistem](#-tentang-sistem)
 
-- [✨ Fitur Utama](#-fitur-utama)  - [🎯 Tentang Sistem](#-tentang-sistem)
+- [✨ Fitur Utama](#-fitur-utama)[![License](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
 
-- [👥 Manajemen Role](#-manajemen-role)- [✨ Fitur Utama](#-fitur-utama)  
+- [👥 Manajemen Role](#-manajemen-role)  
 
-- [📊 Indikator WLB](#-indikator-wlb)- [👥 Manajemen Role](#-manajemen-role)
+- [📊 Indikator WLB](#-indikator-wlb)> **Sistem monitoring Work-Life Balance berbasis Laravel dengan analisis stress dan dashboard analytics komprehensif**
 
-- [🧮 Perhitungan Work-Life Balance](#-perhitungan-work-life-balance)- [📊 Indikator WLB](#-indikator-wlb)
+- [🧮 Perhitungan WLB](#-perhitungan-wlb)
 
-- [📈 Job Stress Scale](#-job-stress-scale)- [🧮 Perhitungan Work-Life Balance](#-perhitungan-work-life-balance)
+- [📈 Job Stress Scale](#-job-stress-scale)> **Sistem monitoring Work-Life Balance berbasis Laravel dengan analisis stress dan dashboard analytics komprehensif**
 
-- [🔧 Instalasi](#-instalasi)- [📈 Job Stress Scale](#-job-stress-scale)
+- [🔧 Instalasi](#-instalasi)
 
-- [🚀 Penggunaan](#-penggunaan)- [🔧 Instalasi](#-instalasi)
+- [🚀 Penggunaan](#-penggunaan)## 📋 Daftar Isi
 
-- [📱 Antarmuka Pengguna](#-antarmuka-pengguna)- [🚀 Penggunaan](#-penggunaan)
+- [📖 API Documentation](#-api-documentation)
 
-- [🛠️ Konfigurasi](#️-konfigurasi)- [📱 Antarmuka Pengguna](#-antarmuka-pengguna)
+- [🤝 Kontribusi](#-kontribusi)## 📋 Daftar Isi
 
-- [📖 API Documentation](#-api-documentation)- [🛠️ Konfigurasi](#️-konfigurasi)
 
-- [🤝 Kontribusi](#-kontribusi)- [📖 API Documentation](#-api-documentation)
 
-- [📄 Lisensi](#-lisensi)- [🤝 Kontribusi](#-kontribusi)
+---- [🎯 Tentang Sistem](#-tentang-sistem)
 
-- [📄 Lisensi](#-lisensi)
 
----
 
----
+## 🎯 Tentang Sistem- [✨ Fitur Utama](#-fitur-utama)  - [🎯 Tentang Sistem](#-tentang-sistem)
 
-## 🎯 Tentang Sistem
 
-## 🎯 Tentang Sistem
 
-**WLB Monitoring System** adalah aplikasi web berbasis Laravel yang dirancang untuk memantau dan menganalisis **Work-Life Balance** karyawan di perusahaan. Sistem ini mengintegrasikan manajemen absensi, cuti, lembur, dan penilaian tingkat stres kerja untuk memberikan insight komprehensif tentang kesejahteraan karyawan.
+**WLB Monitoring System** adalah aplikasi web berbasis Laravel yang dirancang untuk memantau dan menganalisis **Work-Life Balance** karyawan di perusahaan. Sistem ini mengintegrasikan manajemen absensi, cuti, lembur, dan penilaian tingkat stres kerja untuk memberikan insight komprehensif tentang kesejahteraan karyawan.- [👥 Manajemen Role](#-manajemen-role)- [✨ Fitur Utama](#-fitur-utama)  
 
-**WLB Monitoring System** adalah aplikasi web berbasis Laravel yang dirancang untuk memantau dan menganalisis **Work-Life Balance** karyawan di perusahaan. Sistem ini mengintegrasikan manajemen absensi, cuti, lembur, dan penilaian tingkat stres kerja untuk memberikan insight komprehensif tentang kesejahteraan karyawan.
 
-### 🎨 Teknologi yang Digunakan
 
-### � Teknologi yang Digunakan
+### 🎨 Teknologi yang Digunakan- [📊 Indikator WLB](#-indikator-wlb)- [👥 Manajemen Role](#-manajemen-role)
 
-- **Backend**: Laravel 12.x (PHP 8.3+)
 
-- **Frontend**: Blade Templates + Alpine.js- **Backend**: Laravel 12.x (PHP 8.3+)
 
-- **Styling**: Tailwind CSS 3.x- **Frontend**: Blade Templates + Alpine.js
+- **Backend**: Laravel 12.x (PHP 8.3+)- [🧮 Perhitungan Work-Life Balance](#-perhitungan-work-life-balance)- [📊 Indikator WLB](#-indikator-wlb)
 
-- **Database**: MySQL/SQLite- **Styling**: Tailwind CSS 3.x
+- **Frontend**: Blade Templates + Alpine.js
 
-- **Charts**: Chart.js- **Database**: MySQL/SQLite
+- **Styling**: Tailwind CSS 3.x- [📈 Job Stress Scale](#-job-stress-scale)- [🧮 Perhitungan Work-Life Balance](#-perhitungan-work-life-balance)
 
-- **Authentication**: Laravel Breeze + Spatie Roles- **Charts**: Chart.js
+- **Database**: MySQL/SQLite
+
+- **Charts**: Chart.js- [🔧 Instalasi](#-instalasi)- [📈 Job Stress Scale](#-job-stress-scale)
 
 - **Authentication**: Laravel Breeze + Spatie Roles
 
----
+- [🚀 Penggunaan](#-penggunaan)- [🔧 Instalasi](#-instalasi)
 
 ---
 
-## ✨ Fitur Utama
+- [📱 Antarmuka Pengguna](#-antarmuka-pengguna)- [🚀 Penggunaan](#-penggunaan)
 
 ## ✨ Fitur Utama
+
+- [🛠️ Konfigurasi](#️-konfigurasi)- [📱 Antarmuka Pengguna](#-antarmuka-pengguna)
 
 ### 🕒 **Manajemen Absensi**
 
-- ✅ Clock-in/Clock-out otomatis dengan timestamp### � **Manajemen Absensi**
+- ✅ Clock-in/Clock-out otomatis dengan timestamp- [📖 API Documentation](#-api-documentation)- [🛠️ Konfigurasi](#️-konfigurasi)
 
-- 📍 Tracking lokasi dan IP address- ✅ Clock-in/Clock-out otomatis dengan timestamp
+- 📍 Tracking lokasi dan IP address  
 
-- 📊 Laporan absensi harian, mingguan, bulanan- 📍 Tracking lokasi dan IP address
+- 📊 Laporan absensi harian, mingguan, bulanan- [🤝 Kontribusi](#-kontribusi)- [📖 API Documentation](#-api-documentation)
 
-- ⏰ Monitoring keterlambatan dan jam kerja- 📊 Laporan absensi harian, mingguan, bulanan
+- ⏰ Monitoring keterlambatan dan jam kerja
 
-- 📈 Dashboard analytics kehadiran- ⏰ Monitoring keterlambatan dan jam kerja
+- 📈 Dashboard analytics kehadiran- [📄 Lisensi](#-lisensi)- [🤝 Kontribusi](#-kontribusi)
 
-- 📈 Dashboard analytics kehadiran
 
-### 📅 **Manajemen Cuti**
 
-- 🏖️ Pengajuan cuti dengan berbagai kategori:### 📅 **Manajemen Cuti**
+### 📅 **Manajemen Cuti**- [📄 Lisensi](#-lisensi)
 
-  - Cuti Tahunan- 🏖️ Pengajuan cuti dengan berbagai kategori:
+- 🏖️ Pengajuan cuti dengan berbagai kategori (Tahunan, Sakit, Melahirkan, Darurat)
 
-  - Cuti Sakit    - Cuti Tahunan
+- 🔄 Workflow approval multi-level---
 
-  - Cuti Melahirkan  - Cuti Sakit  
+- 📋 History dan tracking status cuti
 
-  - Cuti Darurat  - Cuti Melahirkan
+- 📊 Saldo cuti otomatis---
 
-- 🔄 Workflow approval multi-level  - Cuti Darurat
 
-- 📋 History dan tracking status cuti- 🔄 Workflow approval multi-level
 
-- 📊 Saldo cuti otomatis- 📋 History dan tracking status cuti
+### 🌙 **Manajemen Lembur**## 🎯 Tentang Sistem
 
-- 📊 Saldo cuti otomatis
+- ⏱️ Pengajuan lembur dengan durasi fleksibel (1-4 jam)
 
-### 🌙 **Manajemen Lembur**
+- 🕐 Penjadwalan waktu mulai dan selesai## 🎯 Tentang Sistem
 
-- ⏱️ Pengajuan lembur dengan durasi fleksibel (1-4 jam)### � **Manajemen Lembur**
+- 📝 Dokumentasi alasan dan deskripsi pekerjaan
 
-- 🕐 Penjadwalan waktu mulai dan selesai- ⏱️ Pengajuan lembur dengan durasi fleksibel (1-4 jam)
-
-- 📝 Dokumentasi alasan dan deskripsi pekerjaan- 🕐 Penjadwalan waktu mulai dan selesai
-
-- 💰 Kalkulasi otomatis kompensasi lembur- 📝 Dokumentasi alasan dan deskripsi pekerjaan
-
-- ✅ Sistem approval dengan notifikasi- 💰 Kalkulasi otomatis kompensasi lembur
+- 💰 Kalkulasi otomatis kompensasi lembur**WLB Monitoring System** adalah aplikasi web berbasis Laravel yang dirancang untuk memantau dan menganalisis **Work-Life Balance** karyawan di perusahaan. Sistem ini mengintegrasikan manajemen absensi, cuti, lembur, dan penilaian tingkat stres kerja untuk memberikan insight komprehensif tentang kesejahteraan karyawan.
 
 - ✅ Sistem approval dengan notifikasi
 
+**WLB Monitoring System** adalah aplikasi web berbasis Laravel yang dirancang untuk memantau dan menganalisis **Work-Life Balance** karyawan di perusahaan. Sistem ini mengintegrasikan manajemen absensi, cuti, lembur, dan penilaian tingkat stres kerja untuk memberikan insight komprehensif tentang kesejahteraan karyawan.
+
 ### 📊 **Job Stress Scale Assessment**
 
-- 🧠 Kuesioner standar untuk mengukur tingkat stres kerja### 📊 **Job Stress Scale Assessment**
+- 🧠 Kuesioner standar untuk mengukur tingkat stres kerja### 🎨 Teknologi yang Digunakan
 
-- 📈 Scoring otomatis berdasarkan metodologi ilmiah- 🧠 Kuesioner standar untuk mengukur tingkat stres kerja
+- 📈 Scoring otomatis berdasarkan metodologi ilmiah
 
-- 📅 Assessment bulanan wajib untuk semua karyawan  - 📈 Scoring otomatis berdasarkan metodologi ilmiah
+- 📅 Assessment bulanan wajib untuk semua karyawan### � Teknologi yang Digunakan
 
-- 🚨 Alert untuk tingkat stres tinggi- 📅 Assessment bulanan wajib untuk semua karyawan  
+- 🚨 Alert untuk tingkat stres tinggi
 
-- 📋 History dan trend analysis- 🚨 Alert untuk tingkat stres tinggi
+- 📋 History dan trend analysis- **Backend**: Laravel 12.x (PHP 8.3+)
 
-- 📋 History dan trend analysis
 
-### 📈 **WLB Analytics Dashboard**
 
-- 🎯 **WLB-Stress Matrix**: Visualisasi 2D distribusi karyawan### � **WLB Analytics Dashboard**
+### 📈 **WLB Analytics Dashboard**- **Frontend**: Blade Templates + Alpine.js- **Backend**: Laravel 12.x (PHP 8.3+)
 
-- 📊 Real-time charts dan graphs- 🎯 **WLB-Stress Matrix**: Visualisasi 2D distribusi karyawan
+- 🎯 **WLB-Stress Matrix**: Visualisasi 2D distribusi karyawan
 
-- 🔍 Filter berdasarkan periode, departemen, role- 📊 Real-time charts dan graphs
+- 📊 Real-time charts dan graphs- **Styling**: Tailwind CSS 3.x- **Frontend**: Blade Templates + Alpine.js
 
-- 📱 Export data dalam format Excel/PDF- 🔍 Filter berdasarkan periode, departemen, role
+- 🔍 Filter berdasarkan periode, departemen, role
 
-- 🎨 Interactive heatmaps dan scatter plots- 📱 Export data dalam format Excel/PDF
+- 📱 Export data dalam format Excel/PDF- **Database**: MySQL/SQLite- **Styling**: Tailwind CSS 3.x
 
 - 🎨 Interactive heatmaps dan scatter plots
 
+- **Charts**: Chart.js- **Database**: MySQL/SQLite
+
 ### 👤 **Manajemen Profil & Gaji**
 
-- 👨‍💼 Profile management lengkap### 👤 **Manajemen Profil & Gaji**
+- 👨‍💼 Profile management lengkap- **Authentication**: Laravel Breeze + Spatie Roles- **Charts**: Chart.js
 
-- 💰 Informasi gaji bulanan dan tunjangan- 👨‍💼 Profile management lengkap
+- 💰 Informasi gaji bulanan dan tunjangan
 
-- 🏆 Achievement dan performance metrics  - 💰 Informasi gaji bulanan dan tunjangan
+- 🏆 Achievement dan performance metrics- **Authentication**: Laravel Breeze + Spatie Roles
 
-- 📸 Photo upload dan bio personal- 🏆 Achievement dan performance metrics  
+- 📸 Photo upload dan bio personal
 
-- 🔐 Password dan security settings- 📸 Photo upload dan bio personal
-
-- 🔐 Password dan security settings
-
-------
-
-
-
-## 👥 Manajemen Role## 👥 Manajemen Role
-
-
-
-Sistem mengimplementasikan **3 tingkat akses** dengan hak dan tanggung jawab yang berbeda:Sistem mengimplementasikan **3 tingkat akses** dengan hak dan tanggung jawab yang berbeda:
-
-
-
-### 🔴 **ADMINISTRATOR**### 🔴 **ADMINISTRATOR**
-
-> **Akses Penuh** - Super User dengan kontrol sistem menyeluruh> **Akses Penuh** - Super User dengan kontrol sistem menyeluruh
-
-
-
-#### 🛡️ **Hak Akses**:#### 🛡️ **Hak Akses**:
-
-- ✅ **User Management**: Create, Read, Update, Delete semua user- ✅ **User Management**: Create, Read, Update, Delete semua user
-
-- ✅ **Analytics Global**: Akses semua data analytics perusahaan- ✅ **Analytics Global**: Akses semua data analytics perusahaan
-
-- ✅ **Job Stress Administration**: Monitoring stress level semua karyawan- ✅ **Job Stress Administration**: Monitoring stress level semua karyawan
-
-- ✅ **System Settings**: Konfigurasi sistem dan company settings- ✅ **System Settings**: Konfigurasi sistem dan company settings
-
-- ✅ **Approval Authority**: Approve/reject semua pengajuan cuti dan lembur- ✅ **Approval Authority**: Approve/reject semua pengajuan cuti dan lembur
-
-- ✅ **Report Generation**: Generate laporan komprehensif semua modul- ✅ **Report Generation**: Generate laporan komprehensif semua modul
-
-- ✅ **User Role Management**: Assign dan modify roles karyawan- ✅ **User Role Management**: Assign dan modify roles karyawan
-
-
-
-#### 📋 **Dashboard Admin**:#### 📋 **Dashboard Admin**:
-
-``````
-
-┌─ Total Employees: XXX        ┌─ Pending Approvals: XX┌─ Total Employees: XXX        ┌─ Pending Approvals: XX
-
-├─ Active Users: XXX           ├─ High Stress Alerts: XX  ├─ Active Users: XXX           ├─ High Stress Alerts: XX  
-
-├─ Monthly Attendance: XX%     ├─ System Health: ✅├─ Monthly Attendance: XX%     ├─ System Health: ✅
-
-└─ Completion Rate: XX%        └─ Last Backup: XX hours ago└─ Completion Rate: XX%        └─ Last Backup: XX hours ago
-
-``````
+- 🔐 Password dan security settings---
 
 
 
 ------
 
 
+
+## 👥 Manajemen Role## ✨ Fitur Utama
+
+
+
+Sistem mengimplementasikan **3 tingkat akses** dengan hak dan tanggung jawab yang berbeda:## ✨ Fitur Utama
+
+
+
+### 🔴 **ADMINISTRATOR**### 🕒 **Manajemen Absensi**
+
+> **Akses Penuh** - Super User dengan kontrol sistem menyeluruh
+
+- ✅ Clock-in/Clock-out otomatis dengan timestamp### � **Manajemen Absensi**
+
+**Hak Akses:**
+
+- ✅ User Management: Create, Read, Update, Delete semua user- 📍 Tracking lokasi dan IP address- ✅ Clock-in/Clock-out otomatis dengan timestamp
+
+- ✅ Analytics Global: Akses semua data analytics perusahaan
+
+- ✅ Job Stress Administration: Monitoring stress level semua karyawan- 📊 Laporan absensi harian, mingguan, bulanan- 📍 Tracking lokasi dan IP address
+
+- ✅ System Settings: Konfigurasi sistem dan company settings
+
+- ✅ Approval Authority: Approve/reject semua pengajuan cuti dan lembur- ⏰ Monitoring keterlambatan dan jam kerja- 📊 Laporan absensi harian, mingguan, bulanan
+
+- ✅ Report Generation: Generate laporan komprehensif semua modul
+
+- 📈 Dashboard analytics kehadiran- ⏰ Monitoring keterlambatan dan jam kerja
+
+### 🟡 **MANAGER**
+
+> **Team Management** - Mengelola tim dan approval workflow- 📈 Dashboard analytics kehadiran
+
+
+
+**Hak Akses:**### 📅 **Manajemen Cuti**
+
+- ✅ Team Management: Akses data tim langsung (subordinates)
+
+- ✅ Approval Authority: Approve/reject pengajuan tim- 🏖️ Pengajuan cuti dengan berbagai kategori:### 📅 **Manajemen Cuti**
+
+- ✅ Team Analytics: Dashboard analytics khusus tim
+
+- ✅ Stress Monitoring: Monitoring tingkat stres anggota tim  - Cuti Tahunan- 🏖️ Pengajuan cuti dengan berbagai kategori:
+
+- ✅ Report Team: Generate laporan tim dan individual
+
+- ❌ User Creation: Tidak dapat membuat user baru  - Cuti Sakit    - Cuti Tahunan
+
+- ❌ System Settings: Tidak dapat mengubah konfigurasi sistem
+
+  - Cuti Melahirkan  - Cuti Sakit  
+
+### 🟢 **EMPLOYEE**
+
+> **Personal Data** - Akses terbatas pada data pribadi  - Cuti Darurat  - Cuti Melahirkan
+
+
+
+**Hak Akses:**- 🔄 Workflow approval multi-level  - Cuti Darurat
+
+- ✅ Personal Attendance: Clock-in/out dan view history pribadi
+
+- ✅ Leave Application: Mengajukan cuti dan tracking status- 📋 History dan tracking status cuti- 🔄 Workflow approval multi-level
+
+- ✅ Overtime Request: Mengajukan lembur dan monitoring approval
+
+- ✅ Job Stress Assessment: Mengisi assessment stress bulanan- 📊 Saldo cuti otomatis- 📋 History dan tracking status cuti
+
+- ✅ Profile Management: Update informasi pribadi dan password
+
+- ✅ Personal Analytics: View personal WLB score dan trends- 📊 Saldo cuti otomatis
+
+- ❌ Team Data: Tidak dapat melihat data karyawan lain
+
+- ❌ Approval Rights: Tidak dapat approve/reject pengajuan### 🌙 **Manajemen Lembur**
+
+
+
+---- ⏱️ Pengajuan lembur dengan durasi fleksibel (1-4 jam)### � **Manajemen Lembur**
+
+
+
+## 📊 Indikator WLB- 🕐 Penjadwalan waktu mulai dan selesai- ⏱️ Pengajuan lembur dengan durasi fleksibel (1-4 jam)
+
+
+
+Sistem menggunakan **8 indikator utama** untuk mengukur Work-Life Balance:- 📝 Dokumentasi alasan dan deskripsi pekerjaan- 🕐 Penjadwalan waktu mulai dan selesai
+
+
+
+### 1. 🕒 **Attendance Rate (Tingkat Kehadiran)**- 💰 Kalkulasi otomatis kompensasi lembur- 📝 Dokumentasi alasan dan deskripsi pekerjaan
+
+```
+
+Formula: (Jumlah Hari Hadir / Total Hari Kerja) × 100%- ✅ Sistem approval dengan notifikasi- 💰 Kalkulasi otomatis kompensasi lembur
+
+Bobot: 15%
+
+Excellent: > 95% | Good: 85-95% | Average: 75-85% | Poor: < 75%- ✅ Sistem approval dengan notifikasi
+
+```
+
+### 📊 **Job Stress Scale Assessment**
+
+### 2. ⏰ **Punctuality Score (Skor Ketepatan Waktu)**
+
+```- 🧠 Kuesioner standar untuk mengukur tingkat stres kerja### 📊 **Job Stress Scale Assessment**
+
+Formula: (Hari Tepat Waktu / Total Hari Hadir) × 100%
+
+Bobot: 10%- 📈 Scoring otomatis berdasarkan metodologi ilmiah- 🧠 Kuesioner standar untuk mengukur tingkat stres kerja
+
+Excellent: > 90% | Good: 80-90% | Average: 70-80% | Poor: < 70%
+
+```- 📅 Assessment bulanan wajib untuk semua karyawan  - 📈 Scoring otomatis berdasarkan metodologi ilmiah
+
+
+
+### 3. 🌙 **Overtime Hours (Jam Lembur)**- 🚨 Alert untuk tingkat stres tinggi- 📅 Assessment bulanan wajib untuk semua karyawan  
+
+```
+
+Formula: Total Jam Lembur per Bulan- 📋 History dan trend analysis- 🚨 Alert untuk tingkat stres tinggi
+
+Bobot: 20%
+
+Excellent: 0-10 jam | Good: 11-20 jam | Average: 21-30 jam | Poor: > 30 jam- 📋 History dan trend analysis
+
+```
+
+### 📈 **WLB Analytics Dashboard**
+
+### 4. 🏖️ **Leave Utilization (Pemanfaatan Cuti)**
+
+```- 🎯 **WLB-Stress Matrix**: Visualisasi 2D distribusi karyawan### � **WLB Analytics Dashboard**
+
+Formula: (Cuti Digunakan / Cuti Tersedia) × 100%
+
+Bobot: 15%- 📊 Real-time charts dan graphs- 🎯 **WLB-Stress Matrix**: Visualisasi 2D distribusi karyawan
+
+Excellent: 60-80% | Good: 40-60% atau 80-100% | Average: 20-40% | Poor: 0-20% atau > 100%
+
+```- 🔍 Filter berdasarkan periode, departemen, role- 📊 Real-time charts dan graphs
+
+
+
+### 5. 📈 **Job Stress Level (Tingkat Stres Kerja)**- 📱 Export data dalam format Excel/PDF- 🔍 Filter berdasarkan periode, departemen, role
+
+```
+
+Formula: Skor dari Job Stress Scale Questionnaire- 🎨 Interactive heatmaps dan scatter plots- 📱 Export data dalam format Excel/PDF
+
+Bobot: 25% (Tertinggi)
+
+Low Stress: 1-2.5 | Moderate Stress: 2.6-3.5 | High Stress: 3.6-5.0- 🎨 Interactive heatmaps dan scatter plots
+
+```
+
+### 👤 **Manajemen Profil & Gaji**
+
+### 6. 💼 **Workload Balance (Keseimbangan Beban Kerja)**
+
+```- 👨‍💼 Profile management lengkap### 👤 **Manajemen Profil & Gaji**
+
+Formula: (Task Completion Rate + Meeting Hours + Project Involvement)
+
+Bobot: 10%- 💰 Informasi gaji bulanan dan tunjangan- 👨‍💼 Profile management lengkap
+
+Balanced: Skor optimal berdasarkan role | Overloaded: > 120% | Underloaded: < 60%
+
+```- 🏆 Achievement dan performance metrics  - 💰 Informasi gaji bulanan dan tunjangan
+
+
+
+### 7. 🎯 **Goal Achievement (Pencapaian Target)**- 📸 Photo upload dan bio personal- 🏆 Achievement dan performance metrics  
+
+```
+
+Formula: (Target Tercapai / Total Target) × 100%- 🔐 Password dan security settings- 📸 Photo upload dan bio personal
+
+Bobot: 3%
+
+Excellent: > 100% | Good: 90-100% | Average: 80-90% | Poor: < 80%- 🔐 Password dan security settings
+
+```
+
+------
+
+### 8. 🤝 **Team Collaboration (Kolaborasi Tim)**
+
+```
+
+Formula: Peer Assessment + Meeting Participation + Communication
+
+Bobot: 2%## 👥 Manajemen Role## 👥 Manajemen Role
+
+Excellent: Aktif berkolaborasi | Good: Kolaborasi standar | Average: Minimal | Poor: Kurang
+
+```
+
+
+
+---Sistem mengimplementasikan **3 tingkat akses** dengan hak dan tanggung jawab yang berbeda:Sistem mengimplementasikan **3 tingkat akses** dengan hak dan tanggung jawab yang berbeda:
+
+
+
+## 🧮 Perhitungan WLB
+
+
+
+### 📐 **Formula Master WLB Score**### 🔴 **ADMINISTRATOR**### 🔴 **ADMINISTRATOR**
+
+
+
+```mathematical> **Akses Penuh** - Super User dengan kontrol sistem menyeluruh> **Akses Penuh** - Super User dengan kontrol sistem menyeluruh
+
+WLB Score = Σ(Indikator × Bobot) / 100
+
+
+
+Dimana:
+
+- Attendance Rate × 15%#### 🛡️ **Hak Akses**:#### 🛡️ **Hak Akses**:
+
+- Punctuality × 10%
+
+- Overtime (Inverse) × 20%- ✅ **User Management**: Create, Read, Update, Delete semua user- ✅ **User Management**: Create, Read, Update, Delete semua user
+
+- Leave Utilization × 15%
+
+- Stress Level (Inverse) × 25%- ✅ **Analytics Global**: Akses semua data analytics perusahaan- ✅ **Analytics Global**: Akses semua data analytics perusahaan
+
+- Workload Balance × 10%
+
+- Goal Achievement × 3%- ✅ **Job Stress Administration**: Monitoring stress level semua karyawan- ✅ **Job Stress Administration**: Monitoring stress level semua karyawan
+
+- Team Collaboration × 2%
+
+```- ✅ **System Settings**: Konfigurasi sistem dan company settings- ✅ **System Settings**: Konfigurasi sistem dan company settings
+
+
+
+### 🎯 **Kategori WLB Score**- ✅ **Approval Authority**: Approve/reject semua pengajuan cuti dan lembur- ✅ **Approval Authority**: Approve/reject semua pengajuan cuti dan lembur
+
+
+
+| Score Range | Kategori | Status | Deskripsi |- ✅ **Report Generation**: Generate laporan komprehensif semua modul- ✅ **Report Generation**: Generate laporan komprehensif semua modul
+
+|-------------|----------|--------|-----------|
+
+| **90-100** | 🟢 **EXCELLENT** | ✅ Optimal | Work-life balance sangat baik, karyawan sehat dan produktif |- ✅ **User Role Management**: Assign dan modify roles karyawan- ✅ **User Role Management**: Assign dan modify roles karyawan
+
+| **75-89** | 🔵 **GOOD** | ✅ Sehat | Work-life balance baik dengan ruang perbaikan kecil |
+
+| **60-74** | 🟡 **AVERAGE** | ⚠️ Perlu Perhatian | Beberapa area perlu diperbaiki untuk WLB optimal |
+
+| **45-59** | 🟠 **POOR** | ⚠️ Risiko Tinggi | Memerlukan intervensi segera dan action plan |
+
+| **0-44** | 🔴 **CRITICAL** | 🚨 Darurat | Risiko burnout tinggi, butuh immediate action |#### 📋 **Dashboard Admin**:#### 📋 **Dashboard Admin**:
+
+
+
+### 📊 **WLB-Stress Matrix**``````
+
+
+
+```┌─ Total Employees: XXX        ┌─ Pending Approvals: XX┌─ Total Employees: XXX        ┌─ Pending Approvals: XX
+
+       │ Low Stress │ Moderate   │ High Stress │
+
+       │ (1.0-2.5)  │ (2.6-3.5)  │ (3.6-5.0)   │├─ Active Users: XXX           ├─ High Stress Alerts: XX  ├─ Active Users: XXX           ├─ High Stress Alerts: XX  
+
+───────┼────────────┼────────────┼─────────────┤
+
+HIGH   │ 🌟 STAR     │ ⚡ ACHIEVER │ 🔥 BURNOUT   │├─ Monthly Attendance: XX%     ├─ System Health: ✅├─ Monthly Attendance: XX%     ├─ System Health: ✅
+
+WLB    │ PERFORMER  │ AT RISK    │ CANDIDATE   │
+
+75-100 │            │            │             │└─ Completion Rate: XX%        └─ Last Backup: XX hours ago└─ Completion Rate: XX%        └─ Last Backup: XX hours ago
+
+───────┼────────────┼────────────┼─────────────┤
+
+MED    │ 😌 BALANCED │ ⚠️ WATCH    │ 🚨 HIGH      │``````
+
+WLB    │ EMPLOYEE   │ CLOSELY    │ RISK        │
+
+50-74  │            │            │             │
+
+───────┼────────────┼────────────┼─────────────┤
+
+LOW    │ 😴 UNDER-   │ 📉 POOR     │ 💀 CRITICAL  │------
+
+WLB    │ PERFORMER  │ PERFORMER  │ STATE       │
+
+0-49   │            │            │             │
+
+```
 
 ### 🟡 **MANAGER**  ### � **MANAGER**  
 
+---
+
 > **Team Management** - Mengelola tim dan approval workflow> **Team Management** - Mengelola tim dan approval workflow
 
+## 📈 Job Stress Scale
 
+
+
+### 📊 **Konsep & Tujuan**
 
 #### 🛡️ **Hak Akses**:#### 🛡️ **Hak Akses**:
+
+Job Stress Scale adalah sistem penilaian tingkat stress kerja karyawan yang dilakukan secara **berkala (bulanan)** untuk melengkapi analisis WLB objektif dengan data subjektif dari karyawan.
 
 - ✅ **Team Management**: Akses data tim langsung (subordinates)- ✅ **Team Management**: Akses data tim langsung (subordinates)
 
+### 🔄 **Workflow Pengisian**
+
 - ✅ **Approval Authority**: Approve/reject pengajuan tim- ✅ **Approval Authority**: Approve/reject pengajuan tim
 
-- ✅ **Team Analytics**: Dashboard analytics khusus tim- ✅ **Team Analytics**: Dashboard analytics khusus tim
+```
+
+Monthly Reminder → Employee Assessment → Stress Calculation → Manager Alert → HR Dashboard- ✅ **Team Analytics**: Dashboard analytics khusus tim- ✅ **Team Analytics**: Dashboard analytics khusus tim
+
+```
 
 - ✅ **Stress Monitoring**: Monitoring tingkat stres anggota tim- ✅ **Stress Monitoring**: Monitoring tingkat stres anggota tim
 
+### 📝 **Kategori Stress Level**
+
 - ✅ **Report Team**: Generate laporan tim dan individual- ✅ **Report Team**: Generate laporan tim dan individual
 
-- ❌ **User Creation**: Tidak dapat membuat user baru- ❌ **User Creation**: Tidak dapat membuat user baru
+| Level | Score Range | Status | Indikator | Action Required |
 
-- ❌ **System Settings**: Tidak dapat mengubah konfigurasi sistem- ❌ **System Settings**: Tidak dapat mengubah konfigurasi sistem
+|-------|------------|--------|-----------|-----------------|- ❌ **User Creation**: Tidak dapat membuat user baru- ❌ **User Creation**: Tidak dapat membuat user baru
+
+| 🟢 **Rendah** | 0-30% | Low Stress | Kondisi optimal | Maintain |
+
+| 🟡 **Sedang** | 31-60% | Moderate | Perlu monitoring | Watch closely |- ❌ **System Settings**: Tidak dapat mengubah konfigurasi sistem- ❌ **System Settings**: Tidak dapat mengubah konfigurasi sistem
+
+| 🔴 **Tinggi** | 61-100% | High Stress | Intervensi diperlukan | Immediate action |
 
 
+
+### 📊 **Form Assessment**
 
 #### 📋 **Dashboard Manager**:#### 📋 **Dashboard Manager**:
 
+Karyawan mengisi kuesioner bulanan yang mencakup:
+
 ``````
 
-┌─ Team Members: XX            ┌─ Team Pending: XX┌─ Team Members: XX            ┌─ Team Pending: XX
+1. **Beban Kerja** (Workload pressure)
 
-├─ Team Attendance: XX%        ├─ High Stress Team: XX├─ Team Attendance: XX%        ├─ High Stress Team: XX
+2. **Tekanan Waktu** (Time pressure)┌─ Team Members: XX            ┌─ Team Pending: XX┌─ Team Members: XX            ┌─ Team Pending: XX
 
-├─ Team Performance: ⭐⭐⭐⭐    ├─ Team WLB Score: XX/100├─ Team Performance: ⭐⭐⭐⭐    ├─ Team WLB Score: XX/100
+3. **Hubungan Interpersonal** (Workplace relationships)
+
+4. **Kontrol Pekerjaan** (Job control)├─ Team Attendance: XX%        ├─ High Stress Team: XX├─ Team Attendance: XX%        ├─ High Stress Team: XX
+
+5. **Dukungan Supervisor** (Supervisor support)
+
+6. **Kejelasan Peran** (Role clarity)├─ Team Performance: ⭐⭐⭐⭐    ├─ Team WLB Score: XX/100├─ Team Performance: ⭐⭐⭐⭐    ├─ Team WLB Score: XX/100
+
+7. **Kesempatan Pengembangan** (Development opportunities)
 
 └─ Active Projects: XX         └─ Monthly Target: XX%└─ Active Projects: XX         └─ Monthly Target: XX%
 
+### 👔 **Manager Dashboard**
+
 ``````
 
+Manager dapat memonitor stress level tim melalui:
+
+- **Team Stress Overview**
+
+- **High Stress Alerts** (🔴 counter di sidebar)
+
+- **Individual Stress History**#### 👥 **Subordinate Management**:#### 👥 **Subordinate Management**:
+
+- **Department Comparison**
+
+- **Trend Analysis**- View dan manage direct reports- View dan manage direct reports
 
 
-#### 👥 **Subordinate Management**:#### 👥 **Subordinate Management**:
 
-- View dan manage direct reports- View dan manage direct reports
-
-- Approve leave requests dari anggota tim- Approve leave requests dari anggota tim
-
-- Monitor team stress levels dan workload- Monitor team stress levels dan workload
-
-- Generate team performance reports- Generate team performance reports
+### 🛡️ **Admin Oversight**- Approve leave requests dari anggota tim- Approve leave requests dari anggota tim
 
 
+
+Admin memiliki akses ke:- Monitor team stress levels dan workload- Monitor team stress levels dan workload
+
+- **Company-wide Stress Statistics**
+
+- **Completion Rate Monitoring** (% counter di sidebar)- Generate team performance reports- Generate team performance reports
+
+- **Department Stress Rankings**
+
+- **Historical Trends & Reports**
+
+- **Intervention Tracking**
 
 ------
 
+---
 
+
+
+## 🔧 Instalasi
 
 ### 🟢 **EMPLOYEE**### 🟢 **EMPLOYEE**
 
+### 📋 **Requirements**
+
 > **Personal Data** - Akses terbatas pada data pribadi> **Personal Data** - Akses terbatas pada data pribadi
 
+- PHP 8.3+
 
+- Laravel 12.x
 
-#### 🛡️ **Hak Akses**:#### 🛡️ **Hak Akses**:
+- MySQL 8.0+ / SQLite
+
+- Composer#### 🛡️ **Hak Akses**:#### 🛡️ **Hak Akses**:
+
+- Node.js & NPM
 
 - ✅ **Personal Attendance**: Clock-in/out dan view history pribadi- ✅ **Personal Attendance**: Clock-in/out dan view history pribadi
 
+### 🚀 **Quick Start**
+
 - ✅ **Leave Application**: Mengajukan cuti dan tracking status- ✅ **Leave Application**: Mengajukan cuti dan tracking status
 
-- ✅ **Overtime Request**: Mengajukan lembur dan monitoring approval- ✅ **Overtime Request**: Mengajukan lembur dan monitoring approval
+```bash
 
-- ✅ **Job Stress Assessment**: Mengisi assessment stress bulanan- ✅ **Job Stress Assessment**: Mengisi assessment stress bulanan
+# Clone repository- ✅ **Overtime Request**: Mengajukan lembur dan monitoring approval- ✅ **Overtime Request**: Mengajukan lembur dan monitoring approval
 
-- ✅ **Profile Management**: Update informasi pribadi dan password- ✅ **Profile Management**: Update informasi pribadi dan password
+git clone https://github.com/cherjuno/wlb.git
 
-- ✅ **Personal Analytics**: View personal WLB score dan trends- ✅ **Personal Analytics**: View personal WLB score dan trends
-
-- ❌ **Team Data**: Tidak dapat melihat data karyawan lain- ❌ **Team Data**: Tidak dapat melihat data karyawan lain
-
-- ❌ **Approval Rights**: Tidak dapat approve/reject pengajuan- ❌ **Approval Rights**: Tidak dapat approve/reject pengajuan
+cd wlb- ✅ **Job Stress Assessment**: Mengisi assessment stress bulanan- ✅ **Job Stress Assessment**: Mengisi assessment stress bulanan
 
 
+
+# Install dependencies- ✅ **Profile Management**: Update informasi pribadi dan password- ✅ **Profile Management**: Update informasi pribadi dan password
+
+composer install
+
+npm install- ✅ **Personal Analytics**: View personal WLB score dan trends- ✅ **Personal Analytics**: View personal WLB score dan trends
+
+
+
+# Environment setup- ❌ **Team Data**: Tidak dapat melihat data karyawan lain- ❌ **Team Data**: Tidak dapat melihat data karyawan lain
+
+cp .env.example .env
+
+php artisan key:generate- ❌ **Approval Rights**: Tidak dapat approve/reject pengajuan- ❌ **Approval Rights**: Tidak dapat approve/reject pengajuan
+
+
+
+# Database setup
+
+php artisan migrate --seed
 
 #### 📋 **Dashboard Employee**:#### 📋 **Dashboard Employee**:
 
-``````
+# Asset compilation
 
-┌─ Today's Attendance: ✅/❌   ┌─ Personal WLB: XX/100┌─ Today's Attendance: ✅/❌   ┌─ Personal WLB: XX/100
-
-├─ This Month Leaves: XX       ├─ Stress Level: Low/Med/High├─ This Month Leaves: XX       ├─ Stress Level: Low/Med/High
-
-├─ Overtime Hours: XX          ├─ Salary: Rp. XX.XXX.XXX├─ Overtime Hours: XX          ├─ Salary: Rp. XX.XXX.XXX
-
-└─ Pending Requests: XX        └─ Next Assessment: XX days└─ Pending Requests: XX        └─ Next Assessment: XX days
-
-``````
+npm run build``````
 
 
 
-------
+# Start server┌─ Today's Attendance: ✅/❌   ┌─ Personal WLB: XX/100┌─ Today's Attendance: ✅/❌   ┌─ Personal WLB: XX/100
+
+php artisan serve
+
+```├─ This Month Leaves: XX       ├─ Stress Level: Low/Med/High├─ This Month Leaves: XX       ├─ Stress Level: Low/Med/High
 
 
 
-## 📊 Indikator WLB## � Indikator WLB
+### 👤 **Default Users**├─ Overtime Hours: XX          ├─ Salary: Rp. XX.XXX.XXX├─ Overtime Hours: XX          ├─ Salary: Rp. XX.XXX.XXX
 
 
 
-Sistem menggunakan **8 indikator utama** untuk mengukur Work-Life Balance:Sistem menggunakan **8 indikator utama** untuk mengukur Work-Life Balance:
+| Role | Email | Password | Access Level |└─ Pending Requests: XX        └─ Next Assessment: XX days└─ Pending Requests: XX        └─ Next Assessment: XX days
+
+|------|-------|----------|--------------|
+
+| Admin | admin@wlb.com | password | Full system access |``````
+
+| Manager | manager@wlb.com | password | Team management |
+
+| Employee | employee@wlb.com | password | Self-service |
 
 
 
-### 1. 🕒 **Attendance Rate (Tingkat Kehadiran)**### 1. 🕒 **Attendance Rate (Tingkat Kehadiran)**
-
-``````
-
-Formula: (Jumlah Hari Hadir / Total Hari Kerja) × 100%Formula: (Jumlah Hari Hadir / Total Hari Kerja) × 100%
+---------
 
 
+
+## 🚀 Penggunaan
+
+
+
+### 👤 **Employee Workflow**## 📊 Indikator WLB## � Indikator WLB
+
+
+
+1. **Daily Attendance**
+
+   ```
+
+   Login → Dashboard → Quick Check-in → Work → Quick Check-outSistem menggunakan **8 indikator utama** untuk mengukur Work-Life Balance:Sistem menggunakan **8 indikator utama** untuk mengukur Work-Life Balance:
+
+   ```
+
+
+
+2. **Leave Request**
+
+   ```### 1. 🕒 **Attendance Rate (Tingkat Kehadiran)**### 1. 🕒 **Attendance Rate (Tingkat Kehadiran)**
+
+   Cuti → Create Request → Fill Form → Submit → Wait Approval
+
+   `````````
+
+
+
+3. **Monthly Stress Assessment**Formula: (Jumlah Hari Hadir / Total Hari Kerja) × 100%Formula: (Jumlah Hari Hadir / Total Hari Kerja) × 100%
+
+   ```
+
+   Job Stress Scale → Fill Assessment → Submit → View History
+
+   ```
 
 Bobot: 15%Bobot: 15%
+
+### 👔 **Manager Workflow**
 
 Excellent: > 95%Excellent: > 95%
 
-Good: 85-95%  Good: 85-95%  
+1. **Team Monitoring**
 
-Average: 75-85%Average: 75-85%
+   ```Good: 85-95%  Good: 85-95%  
 
-Poor: < 75%Poor: < 75%
+   Dashboard → Team Overview → Check WLB Scores → Review Alerts
 
-``````
-
-
-
-### 2. ⏰ **Punctuality Score (Skor Ketepatan Waktu)**### 2. ⏰ **Punctuality Score (Skor Ketepatan Waktu)**
-
-``````
-
-Formula: (Hari Tepat Waktu / Total Hari Hadir) × 100%Formula: (Hari Tepat Waktu / Total Hari Hadir) × 100%
+   ```Average: 75-85%Average: 75-85%
 
 
 
-Bobot: 10%Bobot: 10%
+2. **Approval Process**Poor: < 75%Poor: < 75%
+
+   ```
+
+   Notifications → Review Requests → Approve/Reject → Add Comments``````
+
+   ```
+
+
+
+3. **Stress Management**
+
+   ```### 2. ⏰ **Punctuality Score (Skor Ketepatan Waktu)**### 2. ⏰ **Punctuality Score (Skor Ketepatan Waktu)**
+
+   Stres Tim → Check High Stress Alerts → Contact Employee → Take Action
+
+   `````````
+
+
+
+### 🛡️ **Admin Workflow**Formula: (Hari Tepat Waktu / Total Hari Hadir) × 100%Formula: (Hari Tepat Waktu / Total Hari Hadir) × 100%
+
+
+
+1. **User Management**
+
+   ```
+
+   Kelola User → Add/Edit Users → Assign Roles → Monitor StatusBobot: 10%Bobot: 10%
+
+   ```
 
 Excellent: > 90%Excellent: > 90%
 
-Good: 80-90%Good: 80-90%
+2. **System Configuration**
 
-Average: 70-80%  Average: 70-80%  
+   ```Good: 80-90%Good: 80-90%
 
-Poor: < 70%Poor: < 70%
+   Settings → WLB Thresholds → Company Settings → Save Changes
 
-``````
+   ```Average: 70-80%  Average: 70-80%  
 
 
+
+3. **Analytics & Reports**Poor: < 70%Poor: < 70%
+
+   ```
+
+   Dashboard → Company Overview → Department Analysis → Generate Reports``````
+
+   ```
+
+
+
+---
 
 ### 3. 🌙 **Overtime Hours (Jam Lembur)**### 3. 🌙 **Overtime Hours (Jam Lembur)**
 
+## 📖 API Documentation
+
 ``````
+
+### 🔗 **WLB API Endpoints**
 
 Formula: Total Jam Lembur per BulanFormula: Total Jam Lembur per Bulan
 
+```php
 
+// Get user WLB score
+
+GET /api/wlb/score/{user_id}
 
 Bobot: 20%Bobot: 20%
 
-Excellent: 0-10 jamExcellent: 0-10 jam
+// Get red zone employees
 
-Good: 11-20 jamGood: 11-20 jam
+GET /api/wlb/red-zoneExcellent: 0-10 jamExcellent: 0-10 jam
 
-Average: 21-30 jamAverage: 21-30 jam
 
-Poor: > 30 jamPoor: > 30 jam
+
+// Get department WLB summaryGood: 11-20 jamGood: 11-20 jam
+
+GET /api/wlb/department/{department_id}
+
+```Average: 21-30 jamAverage: 21-30 jam
+
+
+
+### 📈 **Stress Scale API**Poor: > 30 jamPoor: > 30 jam
+
+
+
+```php``````
+
+// Submit stress assessment
+
+POST /api/stress/submit
+
+
+
+// Get stress history### 4. 🏖️ **Leave Utilization (Pemanfaatan Cuti)**### 4. 🏖️ **Leave Utilization (Pemanfaatan Cuti)**
+
+GET /api/stress/history/{user_id}
 
 ``````
 
+// Get team stress overview
+
+GET /api/stress/team/{manager_id}Formula: (Cuti Digunakan / Cuti Tersedia) × 100%Formula: (Cuti Digunakan / Cuti Tersedia) × 100%
+
+```
 
 
-### 4. 🏖️ **Leave Utilization (Pemanfaatan Cuti)**### 4. 🏖️ **Leave Utilization (Pemanfaatan Cuti)**
 
-``````
-
-Formula: (Cuti Digunakan / Cuti Tersedia) × 100%Formula: (Cuti Digunakan / Cuti Tersedia) × 100%
-
-
+### ⏰ **Attendance API**
 
 Bobot: 15%Bobot: 15%
 
-Excellent: 60-80%Excellent: 60-80%
+```php
+
+// Quick check-inExcellent: 60-80%Excellent: 60-80%
+
+POST /api/attendance/check-in
 
 Good: 40-60% atau 80-100%Good: 40-60% atau 80-100%
 
-Average: 20-40%Average: 20-40%
+// Quick check-out
 
-Poor: 0-20% atau > 100%Poor: 0-20% atau > 100%
+POST /api/attendance/check-outAverage: 20-40%Average: 20-40%
+
+
+
+// Get today statusPoor: 0-20% atau > 100%Poor: 0-20% atau > 100%
+
+GET /api/attendance/today-status
+
+`````````
+
+
+
+---
+
+
+
+## 🤝 Kontribusi### 5. 📈 **Job Stress Level (Tingkat Stres Kerja)**### 5. 📈 **Job Stress Level (Tingkat Stres Kerja)**
+
+
+
+### 🔄 **Development Workflow**``````
+
+
+
+1. Fork repositoryFormula: Skor dari Job Stress Scale QuestionnaireFormula: Skor dari Job Stress Scale Questionnaire
+
+2. Create feature branch (`git checkout -b feature/AmazingFeature`)
+
+3. Commit changes (`git commit -m 'Add AmazingFeature'`)
+
+4. Push to branch (`git push origin feature/AmazingFeature`)
+
+5. Open Pull RequestBobot: 25% (Tertinggi)Bobot: 25% (Tertinggi)
+
+
+
+### 📋 **Code Standards**Low Stress: 1-2.5Low Stress: 1-2.5
+
+
+
+- Follow PSR-12 coding standardsModerate Stress: 2.6-3.5Moderate Stress: 2.6-3.5
+
+- Write comprehensive tests
+
+- Document all public methodsHigh Stress: 3.6-5.0High Stress: 3.6-5.0
+
+- Use meaningful commit messages
 
 ``````
 
+### 🐛 **Bug Reports**
 
 
-### 5. 📈 **Job Stress Level (Tingkat Stres Kerja)**### 5. 📈 **Job Stress Level (Tingkat Stres Kerja)**
+
+Please include:
+
+- Laravel version### 6. 💼 **Workload Balance (Keseimbangan Beban Kerja)**### 6. 💼 **Workload Balance (Keseimbangan Beban Kerja)**
+
+- PHP version
+
+- Steps to reproduce``````
+
+- Expected vs actual behavior
+
+- Error logsFormula: (Task Completion Rate + Meeting Hours + Project Involvement)Formula: (Task Completion Rate + Meeting Hours + Project Involvement)
+
+
+
+---
+
+
+
+## 📄 LicenseBobot: 10%Bobot: 10%
+
+
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.Balanced: Skor optimal berdasarkan roleBalanced: Skor optimal berdasarkan role
+
+
+
+---Overloaded: > 120% kapasitasOverloaded: > 120% kapasitas
+
+
+
+## 🙏 AcknowledgmentsUnderloaded: < 60% kapasitasUnderloaded: < 60% kapasitas
+
+
+
+- **Laravel Team** - Framework PHP yang luar biasa``````
+
+- **Tailwind CSS** - Utility-first CSS framework
+
+- **Alpine.js** - Reactive framework yang ringan
+
+- **Chart.js** - Library visualisasi data
+
+- **Spatie** - Laravel packages ecosystem### 7. 🎯 **Goal Achievement (Pencapaian Target)**### 7. 🎯 **Goal Achievement (Pencapaian Target)**
+
+- **Open Source Community** - Inspirasi dan dukungan
 
 ``````
 
-Formula: Skor dari Job Stress Scale QuestionnaireFormula: Skor dari Job Stress Scale Questionnaire
-
-
-
-Bobot: 25% (Tertinggi)Bobot: 25% (Tertinggi)
-
-Low Stress: 1-2.5Low Stress: 1-2.5
-
-Moderate Stress: 2.6-3.5Moderate Stress: 2.6-3.5
-
-High Stress: 3.6-5.0High Stress: 3.6-5.0
-
-``````
-
-
-
-### 6. 💼 **Workload Balance (Keseimbangan Beban Kerja)**### 6. 💼 **Workload Balance (Keseimbangan Beban Kerja)**
-
-``````
-
-Formula: (Task Completion Rate + Meeting Hours + Project Involvement)Formula: (Task Completion Rate + Meeting Hours + Project Involvement)
-
-
-
-Bobot: 10%Bobot: 10%
-
-Balanced: Skor optimal berdasarkan roleBalanced: Skor optimal berdasarkan role
-
-Overloaded: > 120% kapasitasOverloaded: > 120% kapasitas
-
-Underloaded: < 60% kapasitasUnderloaded: < 60% kapasitas
-
-``````
-
-
-
-### 7. 🎯 **Goal Achievement (Pencapaian Target)**### 7. 🎯 **Goal Achievement (Pencapaian Target)**
-
-``````
+---
 
 Formula: (Target Tercapai / Total Target) × 100%Formula: (Target Tercapai / Total Target) × 100%
 
+<div align="center">
 
+
+
+### 🌟 **Made with ❤️ for Better Work-Life Balance**
 
 Bobot: 3%Bobot: 3%
 
-Excellent: > 100%Excellent: > 100%
+**WLB Monitoring System v1.0**  
 
-Good: 90-100%Good: 90-100%
+*Empowering organizations to create healthier, more productive workplaces*Excellent: > 100%Excellent: > 100%
+
+
+
+[![GitHub Stars](https://img.shields.io/github/stars/cherjuno/wlb?style=social)](https://github.com/cherjuno/wlb)Good: 90-100%Good: 90-100%
+
+[![Follow](https://img.shields.io/github/followers/cherjuno?style=social)](https://github.com/cherjuno)
 
 Average: 80-90%Average: 80-90%
 
+</div>
 Poor: < 80%Poor: < 80%
 
 ``````
